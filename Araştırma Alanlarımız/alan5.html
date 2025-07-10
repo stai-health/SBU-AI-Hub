@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genomik, Biyoinformatik ve Kişiselleştirilmiş Tıp Yapay Zeka Çalışma Grubu - SBÜ-AI Hub</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0056a4',
+                        secondary: '#4a90e2'
+                    },
+                    borderRadius: {
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,86,164,0.9) 0%, rgba(74,144,226,0.8) 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 86, 164, 0.15);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #0056a4, #4a90e2);
+            border-radius: 2px;
+        }
+        
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .stakeholder-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .stakeholder-card:hover {
+            border-color: #0056a4;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #0056a4 0%, #4a90e2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+        
+        .research-focus-item {
+            border-left: 4px solid #0056a4;
+            background: linear-gradient(90deg, rgba(0,86,164,0.05) 0%, transparent 100%);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .number-highlight {
+            background: linear-gradient(135deg, #0056a4, #4a90e2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+        }
+        
+        .dna-icon {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-white font-sans">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center">
+                <a href="../index.html" class="text-xl md:text-2xl font-bold text-primary">SBÜ-AI Hub</a>
+                <div class="hidden md:block ml-4 text-gray-400">|</div>
+                <div class="hidden md:block ml-4 text-sm text-gray-600">Çalışma Grubu</div>
+            </div>
+            <div class="flex items-center space-x-2 md:space-x-4">
+				<a href="../index.html" class="text-gray-600 hover:text-primary transition">Ana Sayfa</a>
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                    
+                    <a href="../index.html#research" class="text-gray-600 hover:text-primary transition">Araştırma Alanları</a>
+                </div>
+                <a href="../index.html#contact" class="bg-primary text-white px-3 py-1 md:px-4 md:py-2 rounded-button hover:bg-primary/90 transition text-sm md:text-base">
+                    İletişim
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; opacity: 0.1;"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Genomik, Biyoinformatik ve<br>Kişiselleştirilmiş Tıp
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto">
+                    Yapay Zeka Çalışma Grubu
+                </p>
+                <p class="text-lg text-blue-50 max-w-3xl mx-auto leading-relaxed">
+                    Bireylerin genetik özelliklerini temel alan kişiselleştirilmiş tanı, tedavi ve risk öngörüsü süreçlerinde yapay zeka uygulamalarının geliştirilmesini koordine eden multidisipliner araştırma-geliştirme birimi
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 section-title">Çalışma Grubumuz Hakkında</h2>
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <p class="text-lg">
+                            İnsan genomu, 3 milyar harften oluşan dev bir kitap gibi düşünülebilir. Bu çalışma grubu, o kitaptaki her harfin sağlık üzerindeki etkisini anlamaya çalışan bir araştırma ekibi gibidir.
+                        </p>
+                        <p>
+                            Tıpkı bir puzzle'ın parçalarını birleştirmek gibi, genetik bilgiyi klinik anlamla buluşturarak her bireye özgü sağlık çözümleri üretmeyi hedefliyoruz. Genom dizileme verilerinin işlenmesi, genetik varyant analizi ve hastalıkla ilişkili biyobelirteçlerin tespiti aracılığıyla çalışıyoruz.
+                        </p>
+                        <p>
+                            Grubumuzun temel hedefi, <strong>geleneksel "herkese aynı tedavi" yaklaşımından "herkese kendine özgü tedavi" paradigmasına geçişi desteklemektir</strong>. Bu süreç, sadece teknolojik bir gelişim değil, aynı zamanda tıbbın kişiselleşmesi anlamına gelir.
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="highlight-box p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Temel Yaklaşımımız</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-dna-line text-white"></i>
+                                </div>
+                                <span>Genetik varyantların sağlık etkilerini analiz</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-medicine-bottle-line text-white"></i>
+                                </div>
+                                <span>Kişiselleştirilmiş ilaç dozaj hesaplama</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-search-line text-white"></i>
+                                </div>
+                                <span>Nadir hastalıkların erken tanısı</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-team-line text-white"></i>
+                                </div>
+                                <span>Çok-omik veri entegrasyonu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Areas -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Uygulama Alanlarımız</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Genomik ve biyoinformatik alanında yapay zeka destekli çözümler geliştirdiğimiz temel uygulama alanları
+                </p>
+            </div>
+            
+            <div class="application-grid">
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-dna-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Genom Dizileme Analizi</h3>
+                    <p class="text-gray-600">Genetik varyant analizi ve hastalıkla ilişkili biyobelirteçlerin tespiti</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-search-2-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Nadir Hastalık Tanısı</h3>
+                    <p class="text-gray-600">Genetik kökenli nadir hastalıkların saptanması ve tanı algoritmaları</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-microscope-line text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Kanser Genomik Analizi</h3>
+                    <p class="text-gray-600">Tümör profilleme sistemleri ve hedeftli tedavi seçimi</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-medicine-bottle-line text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Farmakogenetik Analiz</h3>
+                    <p class="text-gray-600">Kişiselleştirilmiş ilaç dozaj hesaplama ve yan etki tahmini</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-heart-pulse-line text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Kalıtsal Risk Değerlendirmesi</h3>
+                    <p class="text-gray-600">Hastalık riski analizi ve genetik danışmanlık desteği</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-merge-cells-horizontal text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Çok-Omik Entegrasyon</h3>
+                    <p class="text-gray-600">Genomik, transkriptomik, proteomik ve metabolomik veri birleştirme</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Applications -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Örnek Uygulamalarımız</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Gerçek klinik ortamlarda kullanılan ve test edilen genomik yapay zeka sistemlerimiz
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Application 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-microscope-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                89% Doğruluk
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Kanser Genom Profilleme Platformu</h3>
+                        <p class="text-gray-600 mb-4">
+                            Tümör dokusundan elde edilen genom verilerini analiz ederek hedeftli tedavi seçeneklerini %89 doğruluk ile belirler ve ilaç direnci gelişim riskini öngörür.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Tümör Profilleme</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Hedeftli Tedavi</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">İlaç Direnci</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Kanser hücrelerinin genetik parmak izi analizi
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-medicine-bottle-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                150+ İlaç
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Farmakogenetik Karar Destek Sistemi</h3>
+                        <p class="text-gray-600 mb-4">
+                            Hasta genetik profilini analiz ederek 150+ ilaç için optimal dozaj hesaplar, yan etki riskini değerlendirir ve alternatif ilaç önerileri sunar.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Dozaj Hesaplama</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Yan Etki Analizi</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">İlaç Önerisi</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Aynı ilacın farklı etkileri genetik temelli açıklama
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-search-2-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                94% Doğruluk
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Nadir Hastalık Tanı Algoritması</h3>
+                        <p class="text-gray-600 mb-4">
+                            Klinik bulgular ve genetik test sonuçlarını entegre ederek 7000+ nadir hastalık arasından %94 doğruluk ile tanı önerileri getirir ve ortalama tanı süresini 6 aydan 2 aya indirir.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">7000+ Hastalık</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Hızlı Tanı</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Entegre Analiz</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Karmaşık genetik yapboz çözme sistemi
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-heart-pulse-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                86% Hassasiyet
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Kardiyovasküler Risk Genetik Skorlama</h3>
+                        <p class="text-gray-600 mb-4">
+                            Poligenik risk skorları kullanarak koroner arter hastalığı riskini %86 hassasiyet ile tahmin eder ve kişiselleştirilmiş önleme stratejileri önerir.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Poligenik Skor</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Risk Tahmini</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Önleme Stratejisi</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Yüzlerce genin küçük etkilerinin toplamı analizi
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Applications -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Diğer Uygulama Örnekleri</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-merge-cells-horizontal text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Çok-Omik Entegrasyon Platformu</h3>
+                    <p class="text-gray-600 text-sm">Genom, transkriptom ve proteom verilerini birleştirerek kompleks hastalıkların moleküler mekanizmalarını aydınlatır.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-plant-line text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Mikrobiyom-Beslenme Analizi</h3>
+                    <p class="text-gray-600 text-sm">Bağırsak mikrobiyom profili ve genetik özelliklerden hareketle kişiselleştirilmiş beslenme önerileri geliştirir.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-parent-line text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Prenatal Genetik Risk Değerlendirmesi</h3>
+                    <p class="text-gray-600 text-sm">Maternal ve paternal genetik verileri analiz ederek 300+ genetik hastalık için risk hesaplar.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-shield-line text-2xl text-cyan-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">İmmünogenetik Aşı Yanıt Tahmini</h3>
+                    <p class="text-gray-600 text-sm">HLA tiplemesi ve immün sistem gen varyantlarını analiz ederek aşı etkinliğini tahmin eder.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakeholders -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Paydaşlarımız</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Multidisipliner yaklaşımımızla sağlık ve mühendislik alanlarından uzmanlarla işbirliği yapıyoruz
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Health Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-dna-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Sağlık Paydaşları</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-dna-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Tıbbi Genetik</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-test-tube-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Moleküler Biyoloji</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-hospital-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Onkoloji</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-microscope-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Patoloji</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-heart-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Dahiliye</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-parent-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Kadın Doğum</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Engineering Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-cpu-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Mühendislik Paydaşları</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-database-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Biyoinformatik</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-code-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Bilgisayar Müh.</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-bar-chart-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Biyoistatistik</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-database-2-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Veri Bilimi</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-robot-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Makine Öğrenmesi</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-flask-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Moleküler Modelleme</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Focus -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Araştırma ve Geliştirme Odakları</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Genomik ve kişiselleştirilmiş tıp alanında yapay zeka teknolojilerinin geliştirilmesi için odaklandığımız temel araştırma konuları
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-database-line text-primary mr-3"></i>
+                            Yüksek Boyutlu Omik Veri Entegrasyonu
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Genomik (DNA dizisi), transkriptomik (RNA ekspresyonu), proteomik (protein seviyeleri) ve metabolomik (metabolit konsantrasyonları) verilerinin birleştirilmesi ile hücresel süreçlerin tam resmini ortaya çıkarıyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Zorluk:</strong> Bir şehrin haritasını oluştururken sokakları, binaları, trafik akışını ve insanları aynı anda gözlemlemek gibi
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-line-chart-line text-primary mr-3"></i>
+                            Makine Öğrenmesi ve GWAS Analizi
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Genom çapında ilişkilendirme çalışmalarında (GWAS) milyonlarca genetik varyant test edilir. Çoklu test problemini aşmak ve tesadüfen anlamlı görünen sonuçları ayıklamak için gelişmiş düzeltme yöntemleri kullanıyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>İnovasyon:</strong> İstatistiksel zorlukları aşan yapay zeka algoritmaları
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-medicine-bottle-line text-primary mr-3"></i>
+                            Farmakogenetik Algoritmaları
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            İlaç metabolizması çok faktörlü bir süreçtir. Birden fazla genin etkileşimi, yaş, cinsiyet, diğer ilaçlar ve çevresel faktörlerin karmaşık etkileşimlerini modelleyerek doğru dozaj önerileri geliştiriyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Değer:</strong> Her hasta için en uygun ilaç ve dozajın belirlenmesi
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-search-2-line text-primary mr-3"></i>
+                            Nadir Hastalık Tanı Sistemleri
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            7000'den fazla nadir hastalık bulunduğundan, doğru tanıya ulaşmak için algoritmalar fenotipi (hastalık belirtilerini) ve genotipi (genetik varyantları) akıllıca birleştirir. Bu süreç, binlerce parçalı bir yapboz oyununa benzer.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Kritiklik:</strong> Erken ve doğru tanı ile yaşam kalitesinin artırılması
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-shield-check-line text-primary mr-3"></i>
+                            Etik ve Güvenlik Protokolleri
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Genetik veriler sadece bireyi değil, ailesini ve gelecek nesilleri de etkileyebilir. Veri güvenliği, informed consent prosedürleri ve genetik ayrımcılığı önleme stratejileri konularında kapsamlı protokoller geliştiriyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Gelecek:</strong> Güvenli ve etik genomik tıp uygulamaları
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-stethoscope-line text-primary mr-3"></i>
+                            Klinik Karar Destek Sistemleri
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Laboratuvar bulgularını klinik anlamla buluşturmak kritiktir. Genetik profillerin hastalık riski hakkında verdiği belirsizlikleri yönetebilen ve klinisyenlere net kararlar alabilmeleri için anlaşılır bilgiler sunan sistemler geliştiriyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Uygulama:</strong> Genetik test sonuçlarının klinik yorumlanması
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Etki ve Başarılarımız</h2>
+                <p class="text-blue-100 max-w-3xl mx-auto">
+                    Çalışma grubumuzun genomik ve kişiselleştirilmiş tıp alanında elde ettiği somut başarılar ve klinik etkiler
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">12+</div>
+                    <div class="text-blue-100 text-lg">Aktif Proje</div>
+                    <div class="text-blue-200 text-sm mt-1">Farklı genomik uygulamalar</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">20+</div>
+                    <div class="text-blue-100 text-lg">Araştırmacı</div>
+                    <div class="text-blue-200 text-sm mt-1">Multidisipliner ekip</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">91%</div>
+                    <div class="text-blue-100 text-lg">Ortalama Doğruluk</div>
+                    <div class="text-blue-200 text-sm mt-1">Klinik sistemlerde</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">100K+</div>
+                    <div class="text-blue-100 text-lg">Analiz Edilen Genom</div>
+                    <div class="text-blue-200 text-sm mt-1">Doğrulama sürecinde</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">İşbirliği Fırsatları</h2>
+            <p class="text-xl text-gray-600 mb-8">
+                Genomik ve kişiselleştirilmiş tıp alanında yapay zeka uygulamaları geliştirmek için bizimle işbirliği yapmak ister misiniz?
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="p-6 bg-blue-50 rounded-xl">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-hospital-line text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Klinik İşbirlikleri</h3>
+                    <p class="text-gray-600 text-sm">Hastaneler ve genetik merkezlerle birlikte gerçek hasta verileriyle sistem geliştirme</p>
+                </div>
+                
+                <div class="p-6 bg-green-50 rounded-xl">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-graduation-cap-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Akademik Projeler</h3>
+                    <p class="text-gray-600 text-sm">Üniversiteler arası genomik araştırma projeleri ve ortak yayınlar</p>
+                </div>
+                
+                <div class="p-6 bg-purple-50 rounded-xl">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-building-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Endüstri Ortaklıkları</h3>
+                    <p class="text-gray-600 text-sm">Biyoteknoloji şirketleri ile genomik platform geliştirme ve ticarileştirme</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../index.html#contact" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-primary/90 transition">
+                    İletişime Geçin
+                </a>
+                <a href="../index.html#research" class="border border-primary text-primary px-8 py-3 rounded-button font-medium hover:bg-primary hover:text-white transition">
+                    Diğer Çalışma Grupları
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="text-2xl font-bold mb-4">SBÜ-AI Hub</div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Sağlık Bilimleri Üniversitesi bünyesinde sağlık ve yapay zeka alanında araştırmalar yürüten multidisipliner çalışma grupları
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-twitter-x-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Hızlı Bağlantılar</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="../index.html" class="hover:text-white transition">Ana Sayfa</a></li>
+                        <li><a href="../index.html#about" class="hover:text-white transition">Hakkımızda</a></li>
+                        <li><a href="../index.html#research" class="hover:text-white transition">Araştırma Alanları</a></li>
+                        <li><a href="../index.html#projects" class="hover:text-white transition">Projeler</a></li>
+                        <li><a href="../index.html#team" class="hover:text-white transition">Ekibimiz</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">İletişim</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="ri-mail-line mr-3"></i>
+                            ai-hub@sbu.edu.tr
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-phone-line mr-3"></i>
+                            +90 (216) ___ __ __
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-map-pin-line mr-3 mt-1"></i>
+                            <span class="text-sm">Sağlık Bilimleri Üniversitesi<br>Mekteb-i Tıbbiye-i Şahane<br>Üsküdar, İstanbul</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 SBÜ-AI Hub. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card-hover, .research-focus-item, .stakeholder-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
