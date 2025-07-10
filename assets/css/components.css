@@ -1,0 +1,291 @@
+/* assets/css/components.css - Bileşen özel stilleri */
+
+/* Header bileşeni */
+.header {
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header .logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.header .tagline {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .header .tagline {
+        display: block;
+    }
+}
+
+/* Navigation bileşeni */
+.navigation {
+    display: none;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+    .navigation {
+        display: flex;
+    }
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: var(--gray-700);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* Search bileşeni */
+.search-container {
+    position: relative;
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .search-container {
+        display: block;
+    }
+}
+
+.search-input {
+    background-color: var(--gray-50);
+    border: 1px solid #e5e7eb;
+    border-radius: var(--border-radius-button);
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    font-size: 0.875rem;
+    width: 10rem;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .search-input {
+        width: 16rem;
+    }
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 86, 164, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-600);
+}
+
+/* Hero bileşeni */
+.hero {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 50rem;
+}
+
+/* Card bileşeni */
+.card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 86, 164, 0.1), 0 10px 10px -5px rgba(0, 86, 164, 0.04);
+}
+
+.card-image {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+}
+
+.card-description {
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+}
+
+/* Research card özel stili */
+.research-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 86, 164, 0.1), 0 10px 10px -5px rgba(0, 86, 164, 0.04);
+}
+
+/* Stats section */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--gray-600);
+}
+
+/* Footer bileşeni */
+.footer {
+    background-color: #1f2937;
+    color: white;
+    padding: 3rem 0;
+}
+
+.footer h3 {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+/* Utility classes */
+.section {
+    padding: 4rem 0;
+}
+
+.section-bg-gray {
+    background-color: var(--gray-50);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-12 { margin-bottom: 3rem; }
+
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+
+/* components.css dosyanızın sonuna bu satırı ekleyin: */
+
+.font-pacifico {
+    font-family: 'Pacifico', cursive;
+}
+/* Bu kodu components.css dosyanızın sonuna ekleyin */
+.sbu-header-sticky {
+    position: -webkit-sticky; /* Safari için eski syntax */
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* Ek güvenlik için container da tanımlayalım */
+.sbu-header-container {
+    position: relative;
+    width: 100%;
+}

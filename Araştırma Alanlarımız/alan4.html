@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sağlık Veri Bilimi ve Büyük Veri Analitiği Yapay Zeka Çalışma Grubu - SBÜ-AI Hub</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0056a4',
+                        secondary: '#4a90e2',
+                        accent: '#00b894',
+                        warning: '#fdcb6e'
+                    },
+                    borderRadius: {
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,86,164,0.9) 0%, rgba(0,184,148,0.8) 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 86, 164, 0.15);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #0056a4, #00b894);
+            border-radius: 2px;
+        }
+        
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .stakeholder-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .stakeholder-card:hover {
+            border-color: #0056a4;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #0056a4 0%, #00b894 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+        
+        .research-focus-item {
+            border-left: 4px solid #0056a4;
+            background: linear-gradient(90deg, rgba(0,86,164,0.05) 0%, transparent 100%);
+        }
+        
+        .data-flow-item {
+            border-left: 4px solid #00b894;
+            background: linear-gradient(90deg, rgba(0,184,148,0.05) 0%, transparent 100%);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .number-highlight {
+            background: linear-gradient(135deg, #0056a4, #00b894);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+        }
+        
+        .data-tag {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 1px solid #bbf7d0;
+            color: #166534;
+        }
+        
+        .big-data-visual {
+            background: linear-gradient(45deg, #00b894, #0056a4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-white font-sans">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-2xl font-bold text-primary">SBÜ-AI Hub</a>
+                    <div class="ml-4 text-gray-400">|</div>
+                    <div class="ml-4 text-sm text-gray-600">Çalışma Grubu</div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="../index.html" class="text-gray-600 hover:text-primary transition">Ana Sayfa</a>
+                    <a href="../index.html#research" class="text-gray-600 hover:text-primary transition">Araştırma Alanları</a>
+                    <a href="../index.html#contact" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-primary/90 transition">İletişim</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center; opacity: 0.15;"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Sağlık Veri Bilimi ve Büyük Veri Analitiği</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto">
+                    Yapay Zeka Çalışma Grubu
+                </p>
+                <p class="text-lg text-blue-50 max-w-4xl mx-auto leading-relaxed">
+                    Sağlık alanında üretilen büyük hacimli, çeşitli ve hızlı akan verilerin anlamlandırılması, analiz edilmesi ve yapay zeka modellerine dönüştürülmesini hedefleyen multidisipliner araştırma-geliştirme birimi
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 section-title">Çalışma Grubumuz Hakkında</h2>
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <p class="text-lg">
+                            Sağlık verilerinin karmaşık yapısını anlamak için <strong>sistematik bir yaklaşım</strong> benimser. Elektronik sağlık kayıtları, nüfus tabanlı sağlık istatistikleri, biyobanklar ve ulusal sağlık sistemlerinden gelen verileri entegre ederek klinik ve yönetsel karar destek sistemleri geliştiriyoruz.
+                        </p>
+                        <p>
+                            Veri odaklı sağlık çözümlerinin sistematik olarak uygulanmasını sağlarken, <strong>veri güvenliği, mahremiyet ve etik kullanım ilkelerini</strong> önceliklendirir. Büyük veri teknolojilerinin sağlık alanında uygulanması, özellikle ölçeklenebilirlik ve performans açısından özel yaklaşımlar gerektirir.
+                        </p>
+                        <p>
+                            Grup, elektronik sağlık kayıtlarındaki tutarsızlıkları tespit eden, eksik verileri anlamlı şekilde tamamlayan ve veri bütünlüğünü sağlayan <strong>algoritmalar geliştirmektedir</strong>. Bu süreç, farklı sağlık kurumlarından gelen verilerin standardizasyonunu ve harmonizasyonunu da içerir.
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="highlight-box p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Temel Yaklaşımımız</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-database-line text-white"></i>
+                                </div>
+                                <span>Büyük hacimli sağlık verilerinin sistematik analizi</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-shield-check-line text-white"></i>
+                                </div>
+                                <span>Veri güvenliği ve mahremiyet odaklı çözümler</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-merge-cells-horizontal text-white"></i>
+                                </div>
+                                <span>Çok kaynaklı veri entegrasyonu ve harmonizasyonu</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-line-chart-line text-white"></i>
+                                </div>
+                                <span>Zaman serisi analizi ve tahmin modelleri</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Areas -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Uygulama Alanlarımız</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Sağlık veri bilimi ve büyük veri analitiği alanında geliştirdiğimiz temel uygulama alanları
+                </p>
+            </div>
+            
+            <div class="application-grid">
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-file-text-line text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Elektronik Sağlık Kayıtları</h3>
+                    <p class="text-gray-600">ESK analizi, klinik örüntü çıkarımı ve hasta profillemesi</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-bar-chart-2-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Epidemiyolojik Analiz</h3>
+                    <p class="text-gray-600">Nüfus tabanlı sağlık verileri modellenmesi ve hastalık yükü analizi</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-money-dollar-circle-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Sağlık Ekonomisi</h3>
+                    <p class="text-gray-600">Maliyet optimizasyonu ve sağlık harcaması analizi</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-calendar-event-line text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Kaynak Planlaması</h3>
+                    <p class="text-gray-600">Hastane kapasitesi ve sağlık personeli optimizasyonu</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-time-line text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Zaman Serisi Analizi</h3>
+                    <p class="text-gray-600">Mevsimsel hastalık eğilimi ve prevalans tahmin modelleri</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-shield-user-line text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Veri Mahremiyeti</h3>
+                    <p class="text-gray-600">Anonimleştirme ve veri güvenliği algoritmaları</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-map-pin-line text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Sağlık Coğrafyası</h3>
+                    <p class="text-gray-600">Bölgesel sağlık durumu haritalandırması ve mekansal analiz</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-medicine-bottle-line text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Farmakoepidemiyeloji</h3>
+                    <p class="text-gray-600">İlaç güvenlilik izleme ve tedarik zinciri optimizasyonu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Applications -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Örnek Uygulamalarımız</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Ulusal düzeyde kullanılan ve test edilen büyük veri analitik sistemlerimiz
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Application 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-heart-pulse-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                <span class="number-highlight">94%</span> Doğruluk
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Ulusal Diyabet Prevalans Tahmin Modeli</h3>
+                        <p class="text-gray-600 mb-4">
+                            E-Nabız verilerini kullanarak 81 il bazında diyabet prevalansını %94 doğruluk ile tahmin eder ve 5 yıllık projeksiyonlarla sağlık planlamasına destek sağlar.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">E-Nabız</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Prevalans</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">İl Bazlı</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            5 yıllık projeksiyon ve planlamaya destek
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-hospital-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                <span class="number-highlight">89%</span> Doğruluk
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Hastane Yoğunluk Tahmin Sistemi</h3>
+                        <p class="text-gray-600 mb-4">
+                            Medula verileri, mevsimsel eğilimler ve demografik faktörleri analiz ederek hastane başvurularını haftalık bazda %89 doğruluk ile öngörür.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Medula</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Mevsimsel</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Demografik</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Kaynak planlamasını optimize eder
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-medicine-bottle-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Ulusal Düzey
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Antibiyotik Direnç İzleme Platformu</h3>
+                        <p class="text-gray-600 mb-4">
+                            Ulusal düzeyde e-reçete verilerini analiz ederek antibiyotik kullanım paternlerini izler ve direnç gelişim riskini bölgesel olarak tahmin eder.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">E-Reçete</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Direnç</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Bölgesel</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Antibiyotik kullanım paternlerini izler
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-alarm-warning-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Real-time
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Pandemi Erken Uyarı Sistemi</h3>
+                        <p class="text-gray-600 mb-4">
+                            Semptom tabanlı başvuru verilerini gerçek zamanlı analiz ederek salgın riskini bölgesel olarak değerlendirir ve sağlık otoritelerini önceden uyarır.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Semptom</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Real-time</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Erken Uyarı</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Sağlık otoritelerini önceden uyarır
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 5 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-teal-500 to-teal-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-money-dollar-circle-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Maliyet Analizi
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Sağlık Harcaması Analiz Sistemi</h3>
+                        <p class="text-gray-600 mb-4">
+                            Hasta başvuru verileri, tedavi maliyetleri ve demografik faktörleri entegre ederek sağlık harcamalarının ana dinamiklerini analiz eder.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Maliyet</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Demografik</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Optimizasyon</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Maliyet optimizasyonu önerileri sunar
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 6 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-yellow-500 to-yellow-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-search-eye-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Kanser Tarama
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Kanser Tarama Programı Analizi</h3>
+                        <p class="text-gray-600 mb-4">
+                            Ulusal kanser tarama verilerini analiz ederek risk gruplarını belirler, tarama etkinliğini değerlendirir ve kişiselleştirilmiş tarama önerileri geliştirir.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Tarama</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Risk Grupları</span>
+                            <span class="data-tag px-3 py-1 rounded-full text-sm">Kişiselleştirilmiş</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Kişiselleştirilmiş tarama önerileri
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Flow Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Veri Akış Süreçlerimiz</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Sağlık verilerinin toplanmasından analiz edilmesine kadar olan süreçlerde kullandığımız metodoloji
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="data-flow-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-database-2-line text-accent mr-3"></i>
+                            Veri Toplama ve Entegrasyon
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            E-Nabız, Medula, e-Reçete gibi ulusal sistemlerden veri toplama işlemi hassas bir süreçtir. Farklı formatlar, kodlama sistemleri ve veri kalitesi sorunları karşısında robust entegrasyon algoritmaları kullanıyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Zorluk:</strong> Milyonlarca kayıt arasında tutarlılık sağlama ve gerçek zamanlı entegrasyon
+                        </div>
+                    </div>
+                    
+                    <div class="data-flow-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-shield-keyhole-line text-accent mr-3"></i>
+                            Veri Güvenliği ve Anonimleştirme
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Hasta mahremiyetini korumak için diferansiyel mahremiyet ve homomorhik şifreleme teknikleri kullanıyoruz. Kişisel bilgileri korurken bilimsel değeri olan analizler yapmaya odaklanıyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>İnovasyon:</strong> K-anonimlik ve l-çeşitlilik prensipleri ile güvenli veri paylaşımı
+                        </div>
+                    </div>
+                    
+                    <div class="data-flow-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-tools-line text-accent mr-3"></i>
+                            Veri Temizleme ve Kalite Kontrolü
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Eksik değerler, aykırı değerler ve sistematik hatalar büyük veri analizlerinde kritik sorunlardır. Makine öğrenmesi destekli veri temizleme algoritmaları ile veri kalitesini artırıyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Değer:</strong> %95 veri kalitesi sağlayarak güvenilir analiz sonuçları
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="data-flow-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-bar-chart-grouped-line text-accent mr-3"></i>
+                            İstatistiksel Analiz ve Modelleme
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Zaman serisi analizi, survival analizi, çok değişkenli istatistiksel yöntemler ile sağlık verilerindeki karmaşık ilişkileri ortaya çıkarıyoruz. Bayesci yaklaşımlar belirsizlik quantifikasyonu sağlar.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Kritiklik:</strong> Epidemiyolojik analizlerde nedensellik çıkarımı
+                        </div>
+                    </div>
+                    
+                    <div class="data-flow-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-brain-line text-accent mr-3"></i>
+                            Makine Öğrenmesi ve Tahmin
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Derin öğrenme, ensemble yöntemleri ve transfer learning ile sağlık verilerinden tahmin modelleri geliştiriyoruz. Overfitting ve bias problemleri özel validasyon stratejileri ile ele alınır.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Gelecek:</strong> Federated learning ile hastaneler arası işbirliği
+                        </div>
+                    </div>
+                    
+                    <div class="data-flow-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-dashboard-line text-accent mr-3"></i>
+                            Görselleştirme ve Raporlama
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Karmaşık analiz sonuçlarını karar vericiler için anlaşılır dashboard'lar ve interaktif görselleştirmeler haline getiriyoruz. Real-time monitoring sistemleri ile sürekli takip sağlıyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Uygulama:</strong> Bakanlık düzeyinde stratejik karar desteği
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakeholders -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Paydaşlarımız</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Sağlık veri bilimi alanında multidisipliner yaklaşımla çalıştığımız uzman alanları
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Health Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-heart-pulse-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Sağlık Paydaşları</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-community-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Halk Sağlığı</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-bar-chart-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Biyoistatistik</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-microscope-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Epidemiyoloji</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-building-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Sağlık Yönetimi</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-computer-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Tıbbi Bilişim</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-money-dollar-circle-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Sağlık Ekonomisi</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Engineering Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-database-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Mühendislik Paydaşları</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-database-2-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Veri Bilimi</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-code-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Bilgisayar Müh.</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-pie-chart-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">İstatistik</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-robot-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Yapay Zeka Müh.</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-hard-drive-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Büyük Veri</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-cloud-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Bulut Bilişim</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Focus -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Araştırma ve Geliştirme Odakları</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Sağlık veri bilimi alanında kapsamlı ve sistematik yaklaşımla odaklandığımız temel araştırma konuları
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-database-line text-primary mr-3"></i>
+                            Veri Yapısı ve Kalite Analizi
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Sağlık verileri yüksek boyutlu, seyrek, heterogen ve zaman bağımlı karakteristiklere sahiptir. Eksik değerler, ölçüm hataları ve sistematik sapmaları tespit eden algoritmalar geliştiriyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Zorluk:</strong> Farklı kurumlardan gelen verilerin standardizasyonu ve harmonizasyonu
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-time-line text-primary mr-3"></i>
+                            Zaman Serisi ve Trend Analizi
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Hastalık prevalansındaki mevsimsel değişimler, epidemik dalgalar ve uzun dönemli eğilimler temporal analiz teknikleri ile modellenir. Hibrit tahmin modelleri geliştiriyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>İnovasyon:</strong> Kısa ve uzun vadeli projektörleri destekleyen hibrit modeller
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-shield-keyhole-line text-primary mr-3"></i>
+                            Diferansiyel Mahremiyet
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Hasta kimliklerini korurken bilimsel araştırmaların yapılmasını sağlayan diferansiyel mahremiyet, homomorhik şifreleme ve güvenli çok-partili hesaplama teknikleri araştırıyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Değer:</strong> K-anonimlik ve l-çeşitlilik ile etik veri paylaşımı
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-merge-cells-horizontal text-primary mr-3"></i>
+                            Çok Modlu Veri Entegrasyonu
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Yapılandırılmış, yarı yapılandırılmış ve yapılandırılmamış sağlık verilerini birleştirerek bütünsel analiz imkanı sağlıyoruz. Laboratuvar, klinik notlar ve görüntü verileri entegre edilir.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Kritiklik:</strong> Farklı veri tiplerinde anlamlı ilişkiler kurma
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-share-forward-line text-primary mr-3"></i>
+                            Transfer Öğrenme ve Adaptasyon
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Büyük veri setleri üzerinde eğitilen modellerin küçük ve spesifik veri setlerine uyarlanması ile nadir hastalıklar ve küçük hasta grupları için etkili çözümler sunuyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Gelecek:</strong> Federated learning ile hastaneler arası model paylaşımı
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-global-line text-primary mr-3"></i>
+                            Standartlaşma ve İnteroperabilite
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            FHIR, HL7, ICD-10 gibi uluslararası standartlarla uyumlu veri modelleri ve dönüşüm algoritmaları geliştirerek ulusal ve uluslararası veri paylaşımını destekliyoruz.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Uygulama:</strong> Ulusal sağlık bilgi sistemlerinin interoperabilitesi
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-16 bg-gradient-to-r from-primary to-accent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Etki ve Başarılarımız</h2>
+                <p class="text-blue-100 max-w-3xl mx-auto">
+                    Sağlık veri bilimi alanında elde ettiğimiz somut başarılar ve ulusal düzeyde yarattığımız etki
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">12+</div>
+                    <div class="text-blue-100 text-lg">Aktif Proje</div>
+                    <div class="text-blue-200 text-sm mt-1">Ulusal sistemlerde</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">25+</div>
+                    <div class="text-blue-100 text-lg">Araştırmacı</div>
+                    <div class="text-blue-200 text-sm mt-1">Multidisipliner ekip</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">50M+</div>
+                    <div class="text-blue-100 text-lg">Hasta Kaydı</div>
+                    <div class="text-blue-200 text-sm mt-1">Analiz kapasitesi</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">95%</div>
+                    <div class="text-blue-100 text-lg">Veri Kalitesi</div>
+                    <div class="text-blue-200 text-sm mt-1">Ortalama seviyesi</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">İşbirliği Fırsatları</h2>
+            <p class="text-xl text-gray-600 mb-8">
+                Sağlık veri bilimi alanında büyük veri analitiği çözümleri geliştirmek için bizimle işbirliği yapmak ister misiniz?
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="p-6 bg-blue-50 rounded-xl">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-government-line text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Kamu Kurumları</h3>
+                    <p class="text-gray-600 text-sm">Sağlık Bakanlığı ve ulusal veri sistemleri ile stratejik işbirlikleri</p>
+                </div>
+                
+                <div class="p-6 bg-green-50 rounded-xl">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-graduation-cap-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Akademik Projeler</h3>
+                    <p class="text-gray-600 text-sm">Üniversiteler arası büyük veri araştırma projeleri ve doktora programları</p>
+                </div>
+                
+                <div class="p-6 bg-purple-50 rounded-xl">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-cloud-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Teknoloji Ortaklıkları</h3>
+                    <p class="text-gray-600 text-sm">Bulut bilişim ve büyük veri teknolojileri şirketleri ile çözüm geliştirme</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../index.html#contact" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-primary/90 transition">
+                    İletişime Geçin
+                </a>
+                <a href="../index.html#research" class="border border-primary text-primary px-8 py-3 rounded-button font-medium hover:bg-primary hover:text-white transition">
+                    Diğer Çalışma Grupları
+                </a>
+            </div>
+        </div>
+    </section>
+
+     <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="text-2xl font-bold mb-4">SBÜ-AI Hub</div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Sağlık Bilimleri Üniversitesi bünyesinde sağlık ve yapay zeka alanında araştırmalar yürüten multidisipliner çalışma grupları
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-twitter-x-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Hızlı Bağlantılar</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="../index.html" class="hover:text-white transition">Ana Sayfa</a></li>
+                        <li><a href="../index.html#about" class="hover:text-white transition">Hakkımızda</a></li>
+                        <li><a href="../index.html#research" class="hover:text-white transition">Araştırma Alanları</a></li>
+                        <li><a href="../index.html#projects" class="hover:text-white transition">Projeler</a></li>
+                        <li><a href="../index.html#team" class="hover:text-white transition">Ekibimiz</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">İletişim</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="ri-mail-line mr-3"></i>
+                            ai-hub@sbu.edu.tr
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-phone-line mr-3"></i>
+                            +90 (216) ___ __ __
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-map-pin-line mr-3 mt-1"></i>
+                            <span class="text-sm">Sağlık Bilimleri Üniversitesi<br>Mekteb-i Tıbbiye-i Şahane<br>Üsküdar, İstanbul</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 SBÜ-AI Hub. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card-hover, .research-focus-item, .stakeholder-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

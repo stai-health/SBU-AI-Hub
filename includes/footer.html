@@ -1,0 +1,108 @@
+<!-- includes/footer.html - Ortak footer bileşeni -->
+<footer class="footer">
+    <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <div class="logo text-white font-['Pacifico'] text-2xl mb-4">SBÜ-AI Hub</div>
+                <p class="text-gray-400 mb-6">Sağlıkta Yapay Zekâ ve Dijital Sağlık Araştırma Grubu</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="ri-twitter-x-fill text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="ri-linkedin-fill text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="ri-youtube-fill text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="ri-instagram-fill text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h3>Hızlı Erişim</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/hakkimizda/">Hakkımızda</a></li>
+                    <li><a href="/arastirma/">Araştırma Alanları</a></li>
+                    <li><a href="/projeler/">Projeler</a></li>
+                    <li><a href="/yayinlar/">Yayınlar</a></li>
+                    <li><a href="/etkinlikler/">Etkinlikler</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Kaynaklar</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Eğitim Materyalleri</a></li>
+                    <li><a href="#">Veri Setleri</a></li>
+                    <li><a href="#">Açık Kaynak Projeler</a></li>
+                    <li><a href="#">Araştırma Makaleleri</a></li>
+                    <li><a href="#">Sık Sorulan Sorular</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>İletişim</h3>
+                <ul class="footer-links">
+                    <li class="flex items-start">
+                        <i class="ri-map-pin-line mr-2 mt-1 text-gray-400"></i>
+                        <span class="text-gray-400">Sağlık Bilimleri Üniversitesi, Üsküdar, İstanbul</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="ri-phone-line mr-2 text-gray-400"></i>
+                        <span class="text-gray-400">+90 (216) 418 96 16</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="ri-mail-line mr-2 text-gray-400"></i>
+                        <span class="text-gray-400">ai-hub@sbu.edu.tr</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 SBÜ-Sağlık Yapay Zeka Çalışma Grubu. Tüm hakları saklıdır.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-white text-sm">Gizlilik Politikası</a>
+                <a href="#" class="text-gray-400 hover:text-white text-sm">Kullanım Şartları</a>
+                <a href="#" class="text-gray-400 hover:text-white text-sm">Çerez Politikası</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Ortak JavaScript fonksiyonları -->
+<script>
+// Cookie consent fonksiyonları
+document.addEventListener('DOMContentLoaded', function() {
+    // Cookie consent mantığı burada olabilir
+    // Bu kod her sayfada çalışacak
+    
+    // Mobil menü toggle
+    const mobileMenuButton = document.querySelector('.md\\:hidden');
+    const navigation = document.querySelector('.navigation');
+    
+    if (mobileMenuButton && navigation) {
+        mobileMenuButton.addEventListener('click', function() {
+            navigation.classList.toggle('hidden');
+        });
+    }
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+</script>

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBÜ-Sağlık Yapay Zeka Çalışma Grubu</title>
+    
+    <!-- Font'ları yükle -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0056a4',
+                        secondary: '#4a90e2'
+                    },
+                    borderRadius: {
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- CSS dosyalarını yükle -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    
+    <!-- Sayfa özel stiller -->
+    <style>
+        .hero-gradient {
+            background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0) 100%);
+        }
+        
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 86, 164, 0.1), 0 10px 10px -5px rgba(0, 86, 164, 0.04);
+        }
+        
+        .custom-checkbox {
+            position: relative;
+            padding-left: 28px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+        }
+        .custom-checkbox:hover input ~ .checkmark {
+            border-color: #0056a4;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #0056a4;
+            border-color: #0056a4;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .loading-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            height: 60px;
+            border-radius: 8px;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header placeholder - JavaScript ile doldurulacak -->
+    <div id="header-placeholder" class="loading-placeholder" aria-label="Header yükleniyor..."></div>
+
+    <!-- Ana sayfa içeriği -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-background" style="background-image: url('https://readdy.ai/api/search-image?query=modern%20medical%20laboratory%20with%20AI%20technology%2C%20researchers%20working%20with%20advanced%20equipment%2C%20blue%20and%20white%20color%20scheme%2C%20clean%20and%20futuristic%20environment%2C%20medical%20imaging%20displays%20showing%20brain%20scans%2C%20data%20visualization%20on%20screens&width=1600&height=800&seq=hero1&orientation=landscape');"></div>
+            <div class="hero-gradient"></div>
+            <div class="container relative z-10">
+                <div class="hero-content">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        Sağlıkta Yapay Zekâ ile Geleceği Şekillendiriyoruz
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-8">
+                        SBÜ-AI Hub olarak, tıbbi görüntüleme, klinik karar destek sistemleri, sağlık veri analitiği ve dijital sağlık teknolojileri alanlarında yürüttüğümüz araştırmalarla, sağlık hizmetlerinin kalitesini artıran ve geleceğin tıbbını şekillendiren çözümler üretiyoruz.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="hakkimizda/detay.html" class="btn btn-primary">Daha Fazla Bilgi</a>
+                        <a href="index.html#contact" class="btn btn-outline">İşbirliği Yap</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section section-bg-gray">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Aktif Proje</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">45+</div>
+                        <div class="stat-label">Araştırmacı</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Bilimsel Yayın</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">İşbirliği</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <div class="container">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://readdy.ai/api/search-image?query=diverse%20group%20of%20medical%20researchers%20and%20data%20scientists%20collaborating%20in%20a%20modern%20research%20environment%2C%20discussing%20AI%20applications%20in%20healthcare%2C%20professional%20setting%20with%20medical%20imaging%20displays%20and%20computers%2C%20clean%20and%20bright%20atmosphere&width=600&height=400&seq=about1&orientation=landscape" 
+                             alt="SBÜ-AI Hub Ekibi" 
+                             class="w-full h-auto object-cover rounded-lg shadow-md">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Hakkımızda</h2>
+                        <p class="text-gray-700 mb-6">
+                            SBÜ-Sağlıkta Yapay Zeka Çalışma Grubu, Türkiye'nin en büyük sağlık üniversitesi olan Sağlık Bilimleri Üniversitesi bünyesinde sağlık ve yapay zeka alanında araştırmalar yürüten bir gruptur. Amacımız, yapay zekâ teknolojilerini sağlık alanında etkin bir şekilde kullanarak, tanı, tedavi ve hasta bakımında devrim yaratmaktır.
+                        </p>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Misyonumuz</h3>
+                            <p class="text-gray-700">
+                                Sağlık hizmetlerinde yapay zekâ uygulamalarını geliştirerek, hastalıkların erken teşhisini sağlamak, tedavi süreçlerini iyileştirmek ve sağlık sistemlerinin verimliliğini artırmak.
+                            </p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Vizyonumuz</h3>
+                            <p class="text-gray-700">
+                                Türkiye'de ve dünyada sağlık alanında yapay zekâ uygulamalarının öncüsü olmak ve bu alanda uluslararası düzeyde tanınan bir mükemmeliyet merkezi haline gelmek.
+                            </p>
+                        </div>
+                        
+                        <a href="hakkimizda/detay.html" class="inline-block mt-6 text-primary font-medium hover:underline">
+                            Daha fazla bilgi <i class="ri-arrow-right-line align-middle ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Areas -->
+        <section class="section section-bg-gray" id="research">
+            <div class="container">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Araştırma Alanlarımız</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">
+                        Sağlık alanında yapay zekâ uygulamalarını geliştirmek için çeşitli alanlarda araştırmalar yürütüyoruz. İşte odaklandığımız temel araştırma alanları:
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Research Area 1 -->
+                    <div class="card research-card">
+                        <div class="w-full h-48 overflow-hidden">
+                            <img src="https://www.gep.com/prod/s3fs-public/blog-images/how-ai-is-advancing-the-medical-image-analysis-market.jpg" alt="Tıbbi Görüntü İşleme" class="w-full h-full object-cover">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Tıbbi Görüntüleme ve Tanı Algoritmaları Yapay Zeka Çalışma Grubu</h3>
+                            <p class="card-description">Radyoloji, patoloji ve oftalmoloji alanlarında yapay zekâ destekli görüntü analizi ve tanı sistemleri geliştiriyoruz.</p>
+                            <a href="Araştırma Alanlarımız\alan1.html" class="text-primary font-medium hover:underline">Detaylı Bilgi <i class="ri-arrow-right-line align-middle ml-1"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Research Area 2 -->
+                    <div class="card research-card">
+                        <div class="w-full h-48 overflow-hidden">
+                            <img src="https://media.licdn.com/dms/image/v2/D4D12AQHjwwHm4yI2SQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1732373001305?e=2147483647&v=beta&t=OT6zLUxA-u63nCqNYg1g4L5FeJtcPsuUe6MYhhBQnB0" alt="Klinik Karar Destek Sistemleri" class="w-full h-full object-cover">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Klinik Karar Destek Sistemleri Yapay Zeka Çalışma Grubu</h3>
+                            <p class="card-description">Hekimlere tanı ve tedavi süreçlerinde yardımcı olan, veri odaklı karar destek sistemleri geliştiriyoruz.</p>
+                            <a href="Araştırma Alanlarımız\alan2.html" class="text-primary font-medium hover:underline">Detaylı Bilgi <i class="ri-arrow-right-line align-middle ml-1"></i></a>
+                        </div>
+                    </div>
+					
+                    <!-- Research Area 3 -->
+                    <div class="card research-card">
+                        <div class="w-full h-48 overflow-hidden">
+                            <img src="https://media.licdn.com/dms/image/v2/D4D12AQHjwwHm4yI2SQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1732373001305?e=2147483647&v=beta&t=OT6zLUxA-u63nCqNYg1g4L5FeJtcPsuUe6MYhhBQnB0" alt="Klinik Karar Destek Sistemleri" class="w-full h-full object-cover">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Biyomedikal Sinyal İşleme ve İzleme Yapay Zeka Çalışma Grubu</h3>
+                            <p class="card-description">EKG, EEG, EMG gibi fizyolojik sinyalleri yapay zeka yöntemleriyle analiz ederek sürekli hasta izleme ve erken uyarı sistemleri geliştiriyoruz.</p>
+                            <a href="Araştırma Alanlarımız\alan3.html" class="text-primary font-medium hover:underline">Detaylı Bilgi <i class="ri-arrow-right-line align-middle ml-1"></i></a>
+                        </div>
+                    </div>
+                   
+                    <!-- Research Area 4 -->
+                    <div class="card research-card">
+                        <div class="w-full h-48 overflow-hidden">
+                            <img src="https://oge.tmu.edu.tw/wp-content/uploads/2019/01/artificial-intelligence-for-Shabbir_s-program.jpg" alt="Sağlık Veri Analitiği" class="w-full h-full object-cover">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Sağlık Veri Bilimi ve Büyük Veri Analitiği Yapay Zeka Çalışma Grubu</h3>
+                            <p class="card-description">Büyük sağlık verilerini analiz ederek hastalık trendlerini belirleme ve epidemiyolojik çalışmalar yürütüyoruz.</p>
+                            <a href="Araştırma Alanlarımız\alan4.html" class="text-primary font-medium hover:underline">Detaylı Bilgi <i class="ri-arrow-right-line align-middle ml-1"></i></a>
+                        </div>
+                    </div>
+					
+                    <!-- Research Area 5 -->
+                    <div class="card research-card">
+                        <div class="w-full h-48 overflow-hidden">
+                            <img src="https://cdn.leadersedge.com/wp-content/uploads/2021/10/30214410/shutterstock_1567621081.jpg" alt="Hassas Tıp ve Genom Analitiği" class="w-full h-full object-cover">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Genomik, Biyoinformatik ve Kişiselleştirilmiş Tıp Yapay Zeka Çalışma Grubu</h3>
+                            <p class="card-description">Genetik verilerin analizi ile kişiselleştirilmiş tıp uygulamaları geliştiriyoruz.</p>
+                            <a href="" class="text-primary font-medium hover:underline">Detaylı Bilgi <i class="ri-arrow-right-line align-middle ml-1"></i></a>
+                        </div>
+                    </div>
+					<!-- Research Area 6 -->
+                    <div class="card research-card">
+                        <div class="w-full h-48 overflow-hidden">
+                            <img src="https://images.prismic.io//intuzwebsite/5280b74a-dfab-47e4-b5aa-4f5878e19e70_Banner%402x.png?w=2400&q=80&auto=format,compress&fm=png8" alt="Telehealth ve Uzaktan Hasta Takibi" class="w-full h-full object-cover">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Dijital Sağlık, Akıllı Sistemler, Giyilebilir ve Biyomedikal Teknolojiler Yapay Zeka Çalışma Grubu</h3>
+                            <p class="card-description">Uzaktan hasta monitörizasyonu, telemedicine uygulamaları ve dijital sağlık platformları aracılığıyla erişilebilir sağlık hizmetleri geliştiriyoruz.</p>
+                            <a href="" class="text-primary font-medium hover:underline">Detaylı Bilgi <i class="ri-arrow-right-line align-middle ml-1"></i></a>
+                        </div>
+                    </div>
+					
+					<!-- Research Area 7 -->
+                    <div class="card research-card">
+                        <div class="w-full h-48 overflow-hidden">
+                            <img src="https://media.nature.com/lw767/magazine-assets/d41586-018-05267-x/d41586-018-05267-x_15789480.jpg" alt="Yapay Zeka Destekli İlaç Keşfi" class="w-full h-full object-cover">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">İlaç Keşfi ve Farmakoloji Yapay Zeka Çalışma Grubu</h3>
+                            <p class="card-description">Yeni ilaç moleküllerinin keşfi ve geliştirilmesinde yapay zekâ uygulamaları üzerine çalışıyoruz.</p>
+                            <a href="" class="text-primary font-medium hover:underline">Detaylı Bilgi <i class="ri-arrow-right-line align-middle ml-1"></i></a>
+                        </div>
+                    </div>
+					
+					<!-- Research Area 8 -->
+                    <div class="card research-card">
+                        <div class="w-full h-48 overflow-hidden">
+                            <img src="https://media.licdn.com/dms/image/v2/D4D12AQHjwwHm4yI2SQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1732373001305?e=2147483647&v=beta&t=OT6zLUxA-u63nCqNYg1g4L5FeJtcPsuUe6MYhhBQnB0" alt="Klinik Karar Destek Sistemleri" class="w-full h-full object-cover">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Halk Sağlığı ve Epidemiyoloji Yapay Zeka Çalışma Grubu</h3>
+                            <p class="card-description">Toplum sağlığını etkileyen dinamikleri yapay zeka ile analiz ederek salgın öngörüsü, hastalık yayılım modellemesi ve halk sağlığı müdahalelerinin planlanmasını destekliyoruz.</p>
+                            <a href="" class="text-primary font-medium hover:underline">Detaylı Bilgi <i class="ri-arrow-right-line align-middle ml-1"></i></a>
+                        </div>
+                    </div>
+					
+					<!-- Research Area 9 -->
+                    <div class="card research-card">
+                        <div class="w-full h-48 overflow-hidden">
+                            <img src="https://www.aigantic.com/wp-content/uploads/2023/12/ai-healthcare-education.webp" alt="Yapay Zeka Destekli Sağlık Eğitimi" class="w-full h-full object-cover">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Tıbbi Eğitim, Simülasyon ve Sanal Gerçeklik Yapay Zeka Çalışma Grubu</h3>
+                            <p class="card-description">Tıp öğrencileri ve sağlık profesyonelleri için yapay zeka tabanlı eğitim platformları, simülasyon sistemleri ve kişiselleştirilmiş öğrenme çözümleri geliştiriyoruz.</p>
+                            <a href="" class="text-primary font-medium hover:underline">Detaylı Bilgi <i class="ri-arrow-right-line align-middle ml-1"></i></a>
+                        </div>
+                    </div>
+                    <!-- Research Area 10 -->
+                    <div class="card research-card lg:col-start-2">
+                        <div class="w-full h-48 overflow-hidden">
+                            <img src="https://roundtable.datascience.salon/hubfs/Natural-Language-Processing-in-Healthcare.jpg" alt="Doğal Dil İşleme" class="w-full h-full object-cover">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Sağlıkta Yapay Zeka Etiği, Hukuku ve Politikaları Yapay Zeka Çalışma Grubu</h3>
+                            <p class="card-description">Yapay zeka teknolojilerinin sağlık alanında güvenli, adil ve şeffaf kullanımını sağlamak için etik ilkeler, yasal düzenlemeler ve politika önerileri geliştiriyoruz.</p>
+                            <a href="" class="text-primary font-medium hover:underline">Detaylı Bilgi <i class="ri-arrow-right-line align-middle ml-1"></i></a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="py-16" id="projects">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Güncel Projelerimiz</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">Sağlık alanında yapay zekâ uygulamalarını geliştirmek için yürüttüğümüz projeler:</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=medical%20imaging%20AI%20analysis%20of%20brain%20MRI%20scans%2C%20computer%20screen%20showing%20neural%20network%20processing%20medical%20images%2C%20professional%20medical%20setting%2C%20blue%20color%20scheme&width=400&height=250&seq=proj1&orientation=landscape" alt="Proje 1" class="w-full h-48 object-cover object-top">
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Tıbbi Görüntüleme</span>
+                                <span class="text-gray-500 text-sm">2024-2026</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">BrainScan AI: Nörolojik Hastalıkların Erken Teşhisi</h3>
+                            <p class="text-gray-600 mb-4">Beyin MR görüntülerinde yapay zekâ kullanarak Alzheimer ve diğer nörodejeneratif hastalıkların erken belirtilerini tespit eden bir sistem geliştiriyoruz.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="#" class="text-primary font-medium hover:underline">Detaylı Bilgi</a>
+                                <div class="flex space-x-1">
+                                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20middle-aged%20male%20doctor%20with%20glasses%2C%20neutral%20background&width=32&height=32&seq=doc1&orientation=squarish" alt="Dr. Ahmet Yılmaz" class="w-8 h-8 rounded-full">
+                                    </div>
+                                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20female%20data%20scientist%2C%20neutral%20background&width=32&height=32&seq=doc2&orientation=squarish" alt="Dr. Ayşe Kaya" class="w-8 h-8 rounded-full">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=genetic%20data%20analysis%20on%20computer%20screen%2C%20DNA%20sequencing%20visualization%2C%20laboratory%20setting%20with%20modern%20equipment%2C%20data%20scientists%20working&width=400&height=250&seq=proj2&orientation=landscape" alt="Proje 2" class="w-full h-48 object-cover object-top">
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Genom Analitiği</span>
+                                <span class="text-gray-500 text-sm">2023-2025</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">GenomPredict: Kanser Risk Analizi</h3>
+                            <p class="text-gray-600 mb-4">Genetik veriler ve makine öğrenmesi kullanarak kişiselleştirilmiş kanser risk analizi yapan bir platform geliştiriyoruz.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="#" class="text-primary font-medium hover:underline">Detaylı Bilgi</a>
+                                <div class="flex space-x-1">
+                                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20female%20doctor%20with%20dark%20hair%2C%20neutral%20background&width=32&height=32&seq=doc3&orientation=squarish" alt="Prof. Dr. Zeynep Demir" class="w-8 h-8 rounded-full">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=natural%20language%20processing%20of%20medical%20records%2C%20computer%20screen%20showing%20text%20analysis%20and%20medical%20terminology%20extraction%2C%20clinical%20setting&width=400&height=250&seq=proj3&orientation=landscape" alt="Proje 3" class="w-full h-48 object-cover object-top">
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Doğal Dil İşleme</span>
+                                <span class="text-gray-500 text-sm">2024-2025</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">MedText: Tıbbi Raporlarda Otomatik Analiz</h3>
+                            <p class="text-gray-600 mb-4">Tıbbi raporları otomatik olarak analiz eden ve önemli bulguları çıkaran yapay zekâ tabanlı bir sistem geliştiriyoruz.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="#" class="text-primary font-medium hover:underline">Detaylı Bilgi</a>
+                                <div class="flex space-x-1">
+                                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20young%20male%20data%20scientist%2C%20neutral%20background&width=32&height=32&seq=doc4&orientation=squarish" alt="Dr. Mehmet Arslan" class="w-8 h-8 rounded-full">
+                                    </div>
+                                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20female%20doctor%20with%20light%20hair%2C%20neutral%20background&width=32&height=32&seq=doc5&orientation=squarish" alt="Dr. Selin Yıldız" class="w-8 h-8 rounded-full">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <a href="projeler/" class="btn btn-outline">Tüm Projeleri Görüntüle</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="py-16 bg-gray-50" id="team">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Yönetim Kurulumuz</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">SBÜ-AI Hub'ın yönetim kurulu, Sağlık Bilimleri Üniversitesi'nin farklı birimlerinden uzman akademisyenlerden oluşmaktadır.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20middle-aged%20male%20professor%20with%20glasses%20and%20beard%2C%20formal%20attire%2C%20neutral%20background%2C%20confident%20pose&width=300&height=300&seq=team1&orientation=squarish" alt="Prof. Dr. Mustafa Özkan" class="w-full h-64 object-cover object-top">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Prof. Dr. Mustafa Özkan</h3>
+                            <p class="text-gray-600 text-sm mb-2">Merkez Direktörü</p>
+                            <p class="text-gray-500 text-sm mb-3">Tıbbi Görüntüleme ve Yapay Zekâ</p>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-linkedin-fill"></i>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-twitter-x-fill"></i>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-mail-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20female%20professor%20with%20dark%20hair%2C%20formal%20attire%2C%20neutral%20background%2C%20confident%20pose&width=300&height=300&seq=team2&orientation=squarish" alt="Prof. Dr. Zeynep Demir" class="w-full h-64 object-cover object-top">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Prof. Dr. Zeynep Demir</h3>
+                            <p class="text-gray-600 text-sm mb-2">Araştırma Direktörü</p>
+                            <p class="text-gray-500 text-sm mb-3">Genomik ve Biyoinformatik</p>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-linkedin-fill"></i>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-twitter-x-fill"></i>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-mail-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 3 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20male%20professor%20with%20glasses%2C%20formal%20attire%2C%20neutral%20background%2C%20confident%20pose&width=300&height=300&seq=team3&orientation=squarish" alt="Prof. Dr. Ahmet Yılmaz" class="w-full h-64 object-cover object-top">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Prof. Dr. Ahmet Yılmaz</h3>
+                            <p class="text-gray-600 text-sm mb-2">Eğitim Direktörü</p>
+                            <p class="text-gray-500 text-sm mb-3">Nöroloji ve Yapay Zekâ</p>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-linkedin-fill"></i>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-twitter-x-fill"></i>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-mail-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 4 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20female%20professor%20with%20light%20hair%2C%20formal%20attire%2C%20neutral%20background%2C%20confident%20pose&width=300&height=300&seq=team4&orientation=squarish" alt="Doç. Dr. Ayşe Kaya" class="w-full h-64 object-cover object-top">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Doç. Dr. Ayşe Kaya</h3>
+                            <p class="text-gray-600 text-sm mb-2">İşbirliği Direktörü</p>
+                            <p class="text-gray-500 text-sm mb-3">Sağlık Bilişimi ve Veri Analitiği</p>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-linkedin-fill"></i>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-twitter-x-fill"></i>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <i class="ri-mail-line"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <a href="ekibimiz/" class="btn btn-outline">Tüm Ekibi Görüntüle</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section class="py-16" id="publications">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Son Yayınlarımız</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">Araştırma ekibimizin sağlık ve yapay zekâ alanında yayınladığı son bilimsel çalışmalar:</p>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-6">
+                    <!-- Publication 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="md:w-3/4">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Deep Learning for Automated Detection of Diabetic Retinopathy in Fundus Images: A Comparative Study</h3>
+                                <p class="text-gray-600 mb-3">Özkan M, Demir Z, Yılmaz A, Kaya A. <span class="italic">Journal of Medical Artificial Intelligence</span>, 2024; 15(3): 245-258.</p>
+                                <p class="text-gray-500 mb-4">Bu çalışmada, diyabetik retinopati tespitinde farklı derin öğrenme modellerinin performansı karşılaştırılmış ve özellikle erken evre tespitinde yeni bir hibrit model önerilmiştir.</p>
+                                <div class="flex space-x-3">
+                                    <a href="#" class="text-primary font-medium hover:underline">Tam Metin</a>
+                                    <a href="#" class="text-gray-600 hover:text-primary">DOI: 10.1234/jmai.2024.12345</a>
+                                </div>
+                            </div>
+                            <div class="md:w-1/4 flex justify-center md:justify-end">
+                                <div class="flex space-x-2 items-center">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-sm text-gray-500 mb-1">Atıf</span>
+                                        <div class="bg-gray-100 rounded-full w-16 h-16 flex items-center justify-center">
+                                            <span class="text-xl font-bold text-primary">24</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-sm text-gray-500 mb-1">İndirme</span>
+                                        <div class="bg-gray-100 rounded-full w-16 h-16 flex items-center justify-center">
+                                            <span class="text-xl font-bold text-primary">156</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Publication 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="md:w-3/4">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">AI-Based Prediction of COVID-19 Severity from Chest CT Images: A Multi-Center Study in Turkey</h3>
+                                <p class="text-gray-600 mb-3">Yılmaz A, Kaya A, Arslan M, Yıldız S. <span class="italic">European Journal of Radiology</span>, 2023; 152: 110358.</p>
+                                <p class="text-gray-500 mb-4">Türkiye'deki çok merkezli bir çalışmada, COVID-19 hastalarının göğüs BT görüntülerinden hastalık şiddetini tahmin eden yapay zekâ modeli geliştirilmiştir.</p>
+                                <div class="flex space-x-3">
+                                    <a href="#" class="text-primary font-medium hover:underline">Tam Metin</a>
+                                    <a href="#" class="text-gray-600 hover:text-primary">DOI: 10.1016/j.ejrad.2023.110358</a>
+                                </div>
+                            </div>
+                            <div class="md:w-1/4 flex justify-center md:justify-end">
+                                <div class="flex space-x-2 items-center">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-sm text-gray-500 mb-1">Atıf</span>
+                                        <div class="bg-gray-100 rounded-full w-16 h-16 flex items-center justify-center">
+                                            <span class="text-xl font-bold text-primary">42</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-sm text-gray-500 mb-1">İndirme</span>
+                                        <div class="bg-gray-100 rounded-full w-16 h-16 flex items-center justify-center">
+                                            <span class="text-xl font-bold text-primary">287</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Publication 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="md:w-3/4">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Natural Language Processing for Automated Extraction of Clinical Findings from Turkish Radiology Reports</h3>
+                                <p class="text-gray-600 mb-3">Demir Z, Arslan M, Yıldız S. <span class="italic">Turkish Journal of Medical Sciences</span>, 2023; 53(4): 1125-1136.</p>
+                                <p class="text-gray-500 mb-4">Türkçe radyoloji raporlarından klinik bulguların otomatik çıkarımı için doğal dil işleme tabanlı bir sistem geliştirilmiştir.</p>
+                                <div class="flex space-x-3">
+                                    <a href="#" class="text-primary font-medium hover:underline">Tam Metin</a>
+                                    <a href="#" class="text-gray-600 hover:text-primary">DOI: 10.3906/sag-2208-123</a>
+                                </div>
+                            </div>
+                            <div class="md:w-1/4 flex justify-center md:justify-end">
+                                <div class="flex space-x-2 items-center">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-sm text-gray-500 mb-1">Atıf</span>
+                                        <div class="bg-gray-100 rounded-full w-16 h-16 flex items-center justify-center">
+                                            <span class="text-xl font-bold text-primary">18</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-sm text-gray-500 mb-1">İndirme</span>
+                                        <div class="bg-gray-100 rounded-full w-16 h-16 flex items-center justify-center">
+                                            <span class="text-xl font-bold text-primary">124</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <a href="yayinlar/" class="btn btn-outline">Tüm Yayınları Görüntüle</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="py-16 bg-gray-50" id="events">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Yaklaşan Etkinlikler</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">Sağlık ve yapay zekâ alanında düzenlediğimiz konferans, seminer ve çalıştaylar:</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Event 1 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div class="relative">
+                            <img src="https://www.gtu.edu.tr/fileman/Files/UserFiles/basin_ve_halkla_iliskiler/Haberler/2025/Haziran/Yapay%20Zeka%20%C3%87al%C4%B1%C5%9Ftay%C4%B1/11.jpg" alt="Etkinlik 1" class="w-full h-48 object-cover object-top">
+                            <div class="absolute top-4 left-4 bg-green-600 text-white text-sm font-medium px-3 py-1 rounded">Çalıştay</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3 text-gray-500">
+                                <div class="w-4 h-4 flex items-center justify-center mr-2">
+                                    <i class="ri-calendar-line"></i>
+                                </div>
+                                <span>14 Haziran 2025</span>
+                                <div class="w-4 h-4 flex items-center justify-center mx-2">
+                                    <i class="ri-time-line"></i>
+                                </div>
+                                <span>09:00 - 15:00</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Tıp Araştırmalarında Yapay Zeka Çalıştayı</h3>
+                            <p class="text-gray-600 mb-4">Tıp araştırmalarında yapay zekâ uygulamalarının tartışılacağı ulusal çalıştay. Alanında uzman konuşmacılar ve en son araştırma sonuçları.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center text-gray-500">
+                                    <div class="w-4 h-4 flex items-center justify-center mr-2">
+                                        <i class="ri-map-pin-line"></i>
+                                    </div>
+                                    <span>GTÜ Kongre Merkezi, Gebze</span>
+                                </div>
+                                <a href="etkinlik-detay.html" class="text-primary font-medium hover:underline">Detaylı Bilgi</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 2 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=medical%20workshop%20with%20small%20group%20of%20doctors%20and%20data%20scientists%20working%20together%20on%20computers%2C%20collaborative%20environment&width=400&height=250&seq=event2&orientation=landscape" alt="Etkinlik 2" class="w-full h-48 object-cover object-top">
+                            <div class="absolute top-4 left-4 bg-green-600 text-white text-sm font-medium px-3 py-1 rounded">Çalıştay</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3 text-gray-500">
+                                <div class="w-4 h-4 flex items-center justify-center mr-2">
+                                    <i class="ri-calendar-line"></i>
+                                </div>
+                                <span>22-23 Temmuz 2025</span>
+                                <div class="w-4 h-4 flex items-center justify-center mx-2">
+                                    <i class="ri-time-line"></i>
+                                </div>
+                                <span>10:00 - 16:00</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Tıbbi Görüntü İşleme Çalıştayı</h3>
+                            <p class="text-gray-600 mb-4">Radyoloji ve patoloji görüntülerinde yapay zekâ uygulamaları üzerine uygulamalı çalıştay. Sınırlı kontenjan.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center text-gray-500">
+                                    <div class="w-4 h-4 flex items-center justify-center mr-2">
+                                        <i class="ri-map-pin-line"></i>
+                                    </div>
+                                    <span>SBÜ Teknoloji Merkezi, Ankara</span>
+                                </div>
+                                <a href="#" class="text-primary font-medium hover:underline">Detaylı Bilgi</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 3 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=online%20webinar%20setup%20with%20presenter%20discussing%20healthcare%20AI%2C%20computer%20screens%20showing%20presentation&width=400&height=250&seq=event3&orientation=landscape" alt="Etkinlik 3" class="w-full h-48 object-cover object-top">
+                            <div class="absolute top-4 left-4 bg-blue-500 text-white text-sm font-medium px-3 py-1 rounded">Webinar</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3 text-gray-500">
+                                <div class="w-4 h-4 flex items-center justify-center mr-2">
+                                    <i class="ri-calendar-line"></i>
+                                </div>
+                                <span>5 Ağustos 2025</span>
+                                <div class="w-4 h-4 flex items-center justify-center mx-2">
+                                    <i class="ri-time-line"></i>
+                                </div>
+                                <span>14:00 - 16:00</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Sağlıkta Yapay Zekâ Etiği</h3>
+                            <p class="text-gray-600 mb-4">Sağlık alanında yapay zekâ uygulamalarının etik ve hukuki boyutlarının tartışılacağı çevrimiçi seminer.</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center text-gray-500">
+                                    <div class="w-4 h-4 flex items-center justify-center mr-2">
+                                        <i class="ri-computer-line"></i>
+                                    </div>
+                                    <span>Çevrimiçi (Zoom)</span>
+                                </div>
+                                <a href="#" class="text-primary font-medium hover:underline">Detaylı Bilgi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-10">
+                    <a href="etkinlikler/" class="btn btn-outline">Tüm Etkinlikleri Görüntüle</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section - EKSİK BÖLÜM -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">İşbirliklerimiz</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">Sağlık ve yapay zekâ alanında işbirliği yaptığımız kurumlar:</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <!-- Partner 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center justify-center">
+                        <div class="w-20 h-20 flex items-center justify-center mb-4 text-primary">
+                             <img src="assets\images\sb.png" alt="Sağlık Bakanlığı" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 text-center">Türkiye Cumhuriyeti <br>Sağlık Bakanlığı</h3>
+                    </div>
+                    
+                    <!-- Partner 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center justify-center">
+                        <div class="w-20 h-20 flex items-center justify-center mb-4 text-primary">
+                            <img src="assets\images\sbü.jpg" alt="SBÜ" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 text-center">Sağlık Bilimleri Üniversitesi</h3>
+                    </div>
+                    
+                    <!-- Partner 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center justify-center">
+                        <div class="w-20 h-20 flex items-center justify-center mb-4 text-primary">
+                            <img src="assets\images\tübitak.png" alt="TÜBİTAK" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 text-center">TÜBİTAK</h3>
+                    </div>
+                    
+                    <!-- Partner 4 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center justify-center">
+                        <div class="w-40 h-40 flex items-center justify-center mb-4 text-primary">
+                            <img src="assets\images\tuseb.png" alt="TÜSEB" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 text-center">TÜSEB</h3>
+                    </div>
+                    
+                    <!-- Partner 5 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center justify-center">
+                        <div class="w-40 h-40 flex items-center justify-center mb-4 text-primary">
+                            <img src="assets\images\teknopol.webp" alt="Teknopol İstanbul" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 text-center">Teknopol İstanbul</h3>
+                    </div>
+                    
+                    <!-- Partner 6 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm flex flex-col items-center justify-center">
+                        <div class="w-40 h-40 flex items-center justify-center mb-4 text-primary">
+                            <img src="assets\images\teknopolis.webp" alt="Teknopolis TTO" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 text-center">Teknopolis <br> Teknoloji Transfer Ofisi</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section - EKSİK BÖLÜM -->
+        <section class="py-16 bg-primary/5">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Bültenimize Abone Olun</h2>
+                    <p class="text-gray-600 mb-8">Sağlık ve yapay zekâ alanındaki son gelişmeler, etkinlikler ve projelerimiz hakkında düzenli bilgi almak için bültenimize abone olun.</p>
+                    
+                    <div class="flex flex-col md:flex-row gap-4 justify-center mb-4">
+                        <input type="email" placeholder="E-posta adresiniz" class="px-4 py-3 rounded-button border-none shadow-sm flex-grow md:max-w-md">
+                        <button type="submit" class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">Abone Ol</button>
+                    </div>
+                    
+                    <div class="mt-4 text-sm text-gray-500">
+                        <label class="custom-checkbox">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            KVKK kapsamında <a href="#" class="text-primary hover:underline">gizlilik politikası</a>'nı okudum ve kabul ediyorum.
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section - EKSİK BÖLÜM -->
+        <section class="py-16" id="contact">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">İletişim</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">Sorularınız, işbirliği teklifleriniz veya daha fazla bilgi için bizimle iletişime geçebilirsiniz.</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-12">
+                    <div class="md:w-1/2">
+                        <div class="bg-white p-8 rounded-lg shadow-sm">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-6">Bize Ulaşın</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Adınız Soyadınız</label>
+                                    <input type="text" id="name" class="w-full px-4 py-2 rounded-button border border-gray-200 focus:border-primary focus:outline-none">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">E-posta Adresiniz</label>
+                                    <input type="email" id="email" class="w-full px-4 py-2 rounded-button border border-gray-200 focus:border-primary focus:outline-none">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Konu</label>
+                                <input type="text" id="subject" class="w-full px-4 py-2 rounded-button border border-gray-200 focus:border-primary focus:outline-none">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Mesajınız</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 rounded-button border border-gray-200 focus:border-primary focus:outline-none"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">Gönder</button>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2">
+                        <div class="bg-white p-8 rounded-lg shadow-sm h-full">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-6">İletişim Bilgilerimiz</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                        <i class="ri-map-pin-line text-xl text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-medium text-gray-900 mb-1">Adres</h4>
+                                        <p class="text-gray-600">Sağlık Bilimleri Üniversitesi, Mekteb-i Tıbbiye-i Şahane, Selimiye Mah. Tıbbiye Cad. No:38, 34668 Üsküdar, İstanbul</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                        <i class="ri-phone-line text-xl text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-medium text-gray-900 mb-1">Telefon</h4>
+                                        <p class="text-gray-600">+90 (216) ___ __ __</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                        <i class="ri-mail-line text-xl text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-medium text-gray-900 mb-1">E-posta</h4>
+                                        <p class="text-gray-600">ai-hub@sbu.edu.tr</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="pt-4">
+                                    <h4 class="text-lg font-medium text-gray-900 mb-4">Bizi Takip Edin</h4>
+                                    <div class="flex space-x-4">
+                                        <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                            <i class="ri-twitter-x-fill"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                            <i class="ri-linkedin-fill"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                            <i class="ri-youtube-fill"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                                            <i class="ri-instagram-fill"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer placeholder - JavaScript ile doldurulacak -->
+    <div id="footer-placeholder" class="loading-placeholder" aria-label="Footer yükleniyor..."></div>
+
+    <!-- JavaScript dosyalarını yükle -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script>
+    function bindHomeScroll() {
+      document.querySelectorAll('a[href="#hero"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+      });
+    }
+    document.addEventListener('DOMContentLoaded', bindHomeScroll);
+    document.addEventListener('includesLoaded', bindHomeScroll);
+    </script>
+</body>
+</html>

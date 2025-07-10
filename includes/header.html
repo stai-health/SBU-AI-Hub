@@ -1,0 +1,77 @@
+<!-- includes/header.html - Ortak header bileşeni -->
+<header class="header sticky-header">
+    <div class="container">
+        <div class="flex justify-between items-center py-3">
+            <div class="flex items-center">
+                <div class="logo">SBÜ-AI Hub</div>
+                <span class="tagline">Sağlıkta Yapay Zekâ ve Dijital Sağlık Araştırma Grubu</span>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <!-- Search -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Ara..." class="search-input">
+                    <div class="search-icon">
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+                
+                <!-- Language Selector -->
+                <div class="relative">
+                    <button class="flex items-center space-x-1 text-gray-700 hover:text-primary">
+                        <i class="ri-global-line"></i>
+                        <span class="text-sm">TR</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <!-- Dropdown menu buraya gelecek -->
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-500 hover:text-primary">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="navigation">
+            <ul class="nav-list">
+                <li><a href="#hero" class="nav-link">Ana Sayfa</a></li>
+                <li><a href="/hakkimizda/" class="nav-link">Hakkımızda</a></li>
+                <li><a href="/arastirma/" class="nav-link">Araştırma Alanları</a></li>
+                <li><a href="/projeler/" class="nav-link">Projeler</a></li>
+                <li><a href="/yayinlar/" class="nav-link">Yayınlar</a></li>
+                <li><a href="/ekibimiz/" class="nav-link">Ekibimiz</a></li>
+                <li><a href="/etkinlikler/" class="nav-link">Etkinlikler</a></li>
+                <li><a href="/iletisim/" class="nav-link">İletişim</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Aktif sayfa vurgulaması için JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mevcut sayfa URL'ini al
+    const currentPath = window.location.pathname;
+    
+    // Tüm navigation linklerini bul
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Her link için kontrol et
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        
+        // Link path'i ile mevcut path eşleşiyorsa active class ekle
+        if (currentPath === linkPath || 
+            (currentPath.startsWith(linkPath) && linkPath !== '/')) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Ana sayfa özel durumu
+    if (currentPath === '/' || currentPath === '/index.html') {
+        document.querySelector('a[href="/"]').classList.add('active');
+    }
+});
+</script>
