@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBÜ-Health AI Research Group - About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#0056a4',secondary:'#4a90e2'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,86,164,0.8) 0%, rgba(74,144,226,0.8) 100%);
+        }
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+        .content-card {
+            transition: all 0.3s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 86, 164, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-primary font-['Pacifico'] text-2xl mr-2">SBÜ-AI Hub</div>
+                    <span class="hidden md:block text-gray-600 text-sm">AI in Healthcare and Digital Health Research Center</span>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <!-- Back Button -->
+                    <a href="#" onclick="history.back()" class="flex items-center space-x-2 text-gray-700 hover:text-primary transition">
+                        <i class="ri-arrow-left-line"></i>
+                        <span class="hidden md:inline">Back to Home</span>
+                    </a>
+                    
+                    <!-- Language Selector -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-1 text-gray-700 hover:text-primary">
+                            <i class="ri-global-line"></i>
+                            <span class="text-sm">EN</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">SBÜ-Health AI Research Group</h1>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto">Shaping the future with the power of artificial intelligence technologies in Turkey's most comprehensive academic institution in the health field</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="py-4 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary">
+                            <i class="ri-home-line mr-2"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="ri-arrow-right-s-line text-gray-400"></i>
+                            <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">About Us</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- University Overview -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">The Power of Our University</h2>
+                    <p class="text-lg text-gray-600">The unique structural advantages of University of Health Sciences</p>
+                </div>
+                
+                <div class="content-card bg-white p-8 rounded-lg shadow-sm mb-8">
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        University of Health Sciences has a unique structural advantage as one of Turkey's most comprehensive academic institutions in the health field. Our university has expanded its academic activities concentrated in two main campuses - the Mekteb-i Tıbbiyye-i Şâhâne (Hamidiye) Campus in Istanbul and the Gülhane Campus in Ankara - with six additional medical faculties domestically and five campuses abroad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Advantages -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Key Advantages in Artificial Intelligence</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Hospital Network -->
+                    <div class="content-card bg-white p-6 rounded-lg shadow-sm">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-hospital-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Extensive Hospital Network</h3>
+                        <p class="text-gray-600 mb-4">Access to <strong>60 training and research hospitals</strong> is available within the framework of affiliation protocols with the Public Hospitals Institution of Turkey.</p>
+                        <div class="space-y-2 text-sm text-gray-500">
+                            <div class="flex justify-between">
+                                <span>Istanbul:</span>
+                                <span class="font-medium">25 hospitals</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Ankara:</span>
+                                <span class="font-medium">15 hospitals</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Other provinces:</span>
+                                <span class="font-medium">18 hospitals</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- International Presence -->
+                    <div class="content-card bg-white p-6 rounded-lg shadow-sm">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-global-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">International Access</h3>
+                        <p class="text-gray-600 mb-4">Our active campuses in different geographies provide access to data sources in various populations.</p>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center text-green-600">
+                                <i class="ri-check-line mr-2"></i>
+                                <span>Somalia, Sudan, Philippines, Uzbekistan</span>
+                            </div>
+                            <div class="flex items-center text-blue-600">
+                                <i class="ri-time-line mr-2"></i>
+                                <span>Afghanistan, Palestine, Pakistan, Syria, Lebanon (ongoing)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Research Capacity -->
+                    <div class="content-card bg-white p-6 rounded-lg shadow-sm">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-team-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Research Capacity</h3>
+                        <p class="text-gray-600 mb-4"><strong>Over 4,000 researchers</strong> specialized in various health disciplines form a strong research foundation with our staff.</p>
+                        <div class="flex flex-wrap gap-1 text-xs">
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded">Medicine</span>
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded">Nursing</span>
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded">Pharmacy</span>
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded">Dentistry</span>
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded">Health Sciences</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Hub -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="content-card bg-gradient-to-r from-primary/5 to-secondary/5 p-8 rounded-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-building-line text-3xl text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Health Technology City</h3>
+                            <p class="text-gray-600">Istanbul Pendik - Innovation Center</p>
+                        </div>
+                    </div>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        The Health Technology City established in Istanbul Pendik supports product development potential especially in health software and bio-medical engineering fields. This strategic location offers an ideal ecosystem for transforming academic research into practical applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Mission -->
+                    <div class="content-card bg-white p-8 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-target-line text-2xl text-green-600"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Our Mission</h3>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            SBÜ-Health Artificial Intelligence Working Group develops artificial intelligence solutions that meet critical needs in the health field, ensuring these technologies create concrete benefits in patient care.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Our Working Group transforms our university's multi-campus structure and access to a broad patient population into a strategic advantage, developing applications across a wide spectrum from diagnostic accuracy to treatment optimization, from patient monitoring to epidemic management.
+                        </p>
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <p class="text-gray-700 font-medium">
+                                In this process, we also undertake the responsibility of training competent human resources and integrating the solutions we develop into the national health system.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Vision -->
+                    <div class="content-card bg-white p-8 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-eye-line text-2xl text-blue-600"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Our Vision</h3>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold mr-3">2030</div>
+                            <span class="text-gray-700 font-medium">Our Target Year</span>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            By 2030, we aim to create next-generation standards in health services by achieving radical improvements in patient care quality through artificial intelligence technologies.
+                        </p>
+                        <div class="bg-primary/5 p-4 rounded-lg mb-4">
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                <strong>Global Impact:</strong> Algorithms developed in our hospitals in Istanbul saving lives in health centers in Africa, research from Ankara creating value in clinics in Central Asia are concrete reflections of our vision.
+                            </p>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Our Working Group aims to create an ecosystem that goes beyond being a technology-producing unit, ensuring the ethical and safe application of these technologies, training health professionals, and creating an ecosystem that society can safely access.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Impact -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Our Strategic Goal</h2>
+                <div class="content-card bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-lg">
+                    <p class="text-xl leading-relaxed mb-6">
+                        In this process, we will ensure that SBU becomes Turkey's leading institution in the field of artificial intelligence in health and that the knowledge we produce has a global impact.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="ri-lightbulb-line text-2xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Innovation</h4>
+                            <p class="text-sm opacity-90">Bringing academic excellence together with practical solutions</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="ri-shield-check-line text-2xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Security</h4>
+                            <p class="text-sm opacity-90">Ethical and safe technology implementation</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="ri-graduation-cap-line text-2xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Education</h4>
+                            <p class="text-sm opacity-90">Training health professionals</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Let's Shape the Future Together</h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Contact us to collaborate in the field of artificial intelligence in healthcare, learn about our projects, or work with our research group.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="../index.html#team" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-primary/90 transition inline-flex items-center">
+                        <i class="ri-team-line mr-2"></i>
+                        Meet Our Team
+                    </a>
+                    <a href="../index.html#contact" class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition inline-flex items-center">
+                        <i class="ri-mail-line mr-2"></i>
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-white font-['Pacifico'] text-2xl mb-4">SBÜ-AI Hub</div>
+                    <p class="text-gray-400 mb-6">AI in Healthcare and Digital Health Research Center</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-twitter-x-fill text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-linkedin-fill text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-youtube-fill text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-instagram-fill text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Research Areas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Projects</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Publications</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Events</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Educational Materials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Datasets</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Open Source Projects</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Research Articles</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="ri-map-pin-line mr-2 mt-1 text-gray-400"></i>
+                            <span class="text-gray-400">University of Health Sciences, Üsküdar, Istanbul</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-phone-line mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+90 (216) 418 96 16</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-mail-line mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">ai-hub@sbu.edu.tr</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 SBÜ-Health Artificial Intelligence Working Group. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Use</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

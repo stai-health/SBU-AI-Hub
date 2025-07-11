@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBÜ-Sağlık Yapay Zeka Çalışma Grubu - Hakkımızda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#0056a4',secondary:'#4a90e2'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,86,164,0.8) 0%, rgba(74,144,226,0.8) 100%);
+        }
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+        .content-card {
+            transition: all 0.3s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 86, 164, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-primary font-['Pacifico'] text-2xl mr-2">SBÜ-AI Hub</div>
+                    <span class="hidden md:block text-gray-600 text-sm">Sağlıkta Yapay Zekâ ve Dijital Sağlık Araştırma Grubu</span>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <!-- Back Button -->
+                    <a href="#" onclick="history.back()" class="flex items-center space-x-2 text-gray-700 hover:text-primary transition">
+                        <i class="ri-arrow-left-line"></i>
+                        <span class="hidden md:inline">Ana Sayfaya Dön</span>
+                    </a>
+                    
+                    <!-- Language Selector -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-1 text-gray-700 hover:text-primary">
+                            <i class="ri-global-line"></i>
+                            <span class="text-sm">TR</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">SBÜ-Sağlıkta Yapay Zeka Çalışma Grubu</h1>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto">Türkiye'nin sağlık alanındaki en kapsamlı akademik kurumunda yapay zeka teknolojilerinin gücüyle geleceği şekillendiriyoruz</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="py-4 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary">
+                            <i class="ri-home-line mr-2"></i>
+                            Ana Sayfa
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="ri-arrow-right-s-line text-gray-400"></i>
+                            <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Hakkımızda</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- University Overview -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Üniversitemizin Gücü</h2>
+                    <p class="text-lg text-gray-600">Sağlık Bilimleri Üniversitesi'nin benzersiz yapısal avantajları</p>
+                </div>
+                
+                <div class="content-card bg-white p-8 rounded-lg shadow-sm mb-8">
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Sağlık Bilimleri Üniversitesi, Türkiye'nin sağlık alanındaki en kapsamlı akademik kurumlarından biri olarak benzersiz bir yapısal avantaja sahiptir. Üniversitemiz, İstanbul'daki Mekteb-i Tıbbiyye-i Şâhâne (Hamidiye) Külliyesi ve Ankara'daki Gülhane Külliyesi olmak üzere iki ana kampüste yoğunlaşmış akademik faaliyetlerini, yurtiçindeki altı ek tıp fakültesi ve yurtdışındaki beş külliye ile genişletmiş durumdadır.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Advantages -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Yapay Zeka Alanındaki Temel Avantajlarımız</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Hospital Network -->
+                    <div class="content-card bg-white p-6 rounded-lg shadow-sm">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-hospital-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Geniş Hastane Ağı</h3>
+                        <p class="text-gray-600 mb-4">Türkiye Kamu Hastaneleri Kurumu ile afiliasyon protokolleri çerçevesinde <strong>60 eğitim ve araştırma hastanesine</strong> erişim imkanı bulunmaktadır.</p>
+                        <div class="space-y-2 text-sm text-gray-500">
+                            <div class="flex justify-between">
+                                <span>İstanbul:</span>
+                                <span class="font-medium">25 hastane</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Ankara:</span>
+                                <span class="font-medium">15 hastane</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Diğer iller:</span>
+                                <span class="font-medium">18 hastane</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- International Presence -->
+                    <div class="content-card bg-white p-6 rounded-lg shadow-sm">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-global-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Uluslararası Erişim</h3>
+                        <p class="text-gray-600 mb-4">Farklı coğrafyalarda aktif külliyelerimiz, çeşitli popülasyonlarda veri kaynaklarına erişim sağlar.</p>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center text-green-600">
+                                <i class="ri-check-line mr-2"></i>
+                                <span>Somali, Sudan, Filipinler, Özbekistan</span>
+                            </div>
+                            <div class="flex items-center text-blue-600">
+                                <i class="ri-time-line mr-2"></i>
+                                <span>Afganistan, Filistin, Pakistan, Suriye, Lübnan (devam eden)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Research Capacity -->
+                    <div class="content-card bg-white p-6 rounded-lg shadow-sm">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-team-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Araştırma Kapasitesi</h3>
+                        <p class="text-gray-600 mb-4"><strong>4.000'in üzerinde araştırmacı</strong> çeşitli sağlık disiplinlerinde uzmanlaşmış kadromuzla güçlü bir araştırma temeli oluşturmaktadır.</p>
+                        <div class="flex flex-wrap gap-1 text-xs">
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded">Tıp</span>
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded">Hemşirelik</span>
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded">Eczacılık</span>
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded">Diş Hekimliği</span>
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded">Sağlık Bilimleri</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Hub -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="content-card bg-gradient-to-r from-primary/5 to-secondary/5 p-8 rounded-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-building-line text-3xl text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Sağlık Teknokenti</h3>
+                            <p class="text-gray-600">İstanbul Pendik - İnovasyon Merkezi</p>
+                        </div>
+                    </div>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        İstanbul Pendik'te kurulan Sağlık Teknokenti, özellikle sağlık yazılımları ve biyo-medikal mühendislik alanlarında ürün geliştirme potansiyelini desteklemektedir. Bu stratejik konum, akademik araştırmaların pratik uygulamalara dönüştürülmesi için ideal bir ekosistem sunmaktadır.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Mission -->
+                    <div class="content-card bg-white p-8 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-target-line text-2xl text-green-600"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Misyonumuz</h3>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            SBÜ-Sağlıkta Yapay Zeka Çalışma Grubu, sağlık alanındaki kritik ihtiyaçları karşılayan yapay zeka çözümlerini geliştirerek bu teknolojilerin hasta bakımında somut faydalar yaratmasını sağlamaktadır.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Çalışma Grubumuz, üniversitemizin çok kampüslü yapısını ve geniş hasta popülasyonuna erişimini stratejik avantaja dönüştürmekte, tanı doğruluğundan tedavi optimizasyonuna, hasta takibinden salgın yönetimine kadar geniş spektrumda uygulamalar geliştirmektedir.
+                        </p>
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <p class="text-gray-700 font-medium">
+                                Bu süreçte yetkin insan kaynağı yetiştirme ve geliştirdiğimiz çözümleri ulusal sağlık sistemine entegre etme sorumluluğunu da üstlenmekteyiz.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Vision -->
+                    <div class="content-card bg-white p-8 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-eye-line text-2xl text-blue-600"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Vizyonumuz</h3>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold mr-3">2030</div>
+                            <span class="text-gray-700 font-medium">Hedef Yılımız</span>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            2030 yılına kadar yapay zeka teknolojileriyle hasta bakım kalitesinde köklü iyileştirmeler sağlayarak sağlık hizmetlerinde yeni nesil standartları oluşturmayı hedefliyoruz.
+                        </p>
+                        <div class="bg-primary/5 p-4 rounded-lg mb-4">
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                <strong>Küresel Etki:</strong> İstanbul'daki hastanelerimizde geliştirilen algoritmaların Afrika'daki sağlık merkezlerinde hayat kurtarması, Ankara'daki araştırmaların Orta Asya'daki kliniklerde değer yaratması vizyonumuzun somut yansımalarıdır.
+                            </p>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Çalışma Grubumuz, teknoloji üreten bir birim olmaktan öte, bu teknolojilerin etik ve güvenli uygulanmasını sağlayan, sağlık profesyonellerini yetiştiren ve toplumun güvenle erişebileceği bir ekosistem yaratmayı amaçlamaktadır.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Impact -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Stratejik Hedefimiz</h2>
+                <div class="content-card bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-lg">
+                    <p class="text-xl leading-relaxed mb-6">
+                        Bu süreçte SBÜ'nün Türkiye'nin sağlıkta yapay zeka alanındaki öncü kurumu olmasını ve ürettiğimiz bilginin küresel ölçekte etki yaratmasını sağlayacağız.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="ri-lightbulb-line text-2xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">İnovasyon</h4>
+                            <p class="text-sm opacity-90">Akademik mükemmelliği pratik çözümlerle buluşturma</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="ri-shield-check-line text-2xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Güvenlik</h4>
+                            <p class="text-sm opacity-90">Etik ve güvenli teknoloji uygulaması</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="ri-graduation-cap-line text-2xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Eğitim</h4>
+                            <p class="text-sm opacity-90">Sağlık profesyonellerini yetiştirme</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Geleceği Birlikte Şekillendirelim</h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Sağlıkta yapay zeka alanında işbirliği yapmak, projelerimiz hakkında bilgi almak veya araştırma grubumuzla çalışmak için bizimle iletişime geçin.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="../index.html#team" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-primary/90 transition inline-flex items-center">
+                        <i class="ri-team-line mr-2"></i>
+                        Ekibimizle Tanışın
+                    </a>
+                    <a href="../index.html#contact" class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition inline-flex items-center">
+                        <i class="ri-mail-line mr-2"></i>
+                        İletişime Geçin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-white font-['Pacifico'] text-2xl mb-4">SBÜ-AI Hub</div>
+                    <p class="text-gray-400 mb-6">Sağlıkta Yapay Zekâ ve Dijital Sağlık Araştırma Grubu</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-twitter-x-fill text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-linkedin-fill text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-youtube-fill text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-instagram-fill text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Hızlı Erişim</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Ana Sayfa</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Araştırma Alanları</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Projeler</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Yayınlar</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Etkinlikler</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Kaynaklar</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Eğitim Materyalleri</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Veri Setleri</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Açık Kaynak Projeler</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Araştırma Makaleleri</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">İletişim</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="ri-map-pin-line mr-2 mt-1 text-gray-400"></i>
+                            <span class="text-gray-400">Sağlık Bilimleri Üniversitesi, Üsküdar, İstanbul</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-phone-line mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+90 (216) 418 96 16</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-mail-line mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">ai-hub@sbu.edu.tr</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 SBÜ-Sağlık Yapay Zeka Çalışma Grubu. Tüm hakları saklıdır.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Gizlilik Politikası</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Kullanım Şartları</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Çerez Politikası</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

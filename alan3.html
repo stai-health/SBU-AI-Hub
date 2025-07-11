@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biyomedikal Sinyal İşleme ve İzleme Yapay Zeka Çalışma Grubu - SBÜ-AI Hub</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0056a4',
+                        secondary: '#4a90e2'
+                    },
+                    borderRadius: {
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- CSS Dosyaları -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,86,164,0.9) 0%, rgba(74,144,226,0.8) 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 86, 164, 0.15);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #0056a4, #4a90e2);
+            border-radius: 2px;
+        }
+        
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .stakeholder-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .stakeholder-card:hover {
+            border-color: #0056a4;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #0056a4 0%, #4a90e2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+        
+        .research-focus-item {
+            border-left: 4px solid #0056a4;
+            background: linear-gradient(90deg, rgba(0,86,164,0.05) 0%, transparent 100%);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .number-highlight {
+            background: linear-gradient(135deg, #0056a4, #4a90e2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+        }
+        
+        /* Loading placeholder stili */
+        .loading-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            min-height: 80px;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-white font-sans">
+    
+    <!-- Header Placeholder -->
+    <div id="header-placeholder" class="loading-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); background-size: cover; background-position: center; opacity: 0.15;"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Biyomedikal Sinyal İşleme ve İzleme
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto">
+                    Yapay Zeka Çalışma Grubu
+                </p>
+                <p class="text-lg text-blue-50 max-w-4xl mx-auto leading-relaxed">
+                    İnsan vücuduna ait fizyolojik sinyallerin (EKG, EEG, EMG, solunum, kan basıncı, oksijen satürasyonu vb.) yapay zeka yöntemleriyle analiz edilmesi ve klinik karar destek sistemlerine entegre edilmesini hedefleyen multidisipliner Ar-Ge birimidir.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 section-title">Çalışma Grubumuz Hakkında</h2>
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <p class="text-lg">
+                            Biyomedikal sinyaller, vücudumuzun anlık durumunu yansıtan dijital dil gibi düşünülebilir. Kalp atışları, beyin dalgaları, kas aktivitesi ve solunum ritmi gibi fizyolojik sinyaller, sağlık durumumuz hakkında sürekli bilgi akışı sağlar.
+                        </p>
+                        <p>
+                            Yapay zeka teknolojileri, bu karmaşık sinyal verilerini anlayabilir ve normal paternlerden sapmaları tespit edebilir. Bu süreç, deneyimli bir müzisyenin bir orkestrada yanlış çalan enstrümanı anında fark etmesi gibidir.
+                        </p>
+                        <p>
+                            Grubumuzun temel amacı, <strong>zaman serisi analizi, sinyal işleme ve makine öğrenmesi teknikleri kullanarak sürekli hasta izleme, erken uyarı sistemleri ve sinyal temelli hastalık tahmin modelleri geliştirmektir.</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="highlight-box p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Temel Yaklaşımımız</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-pulse-line text-white"></i>
+                                </div>
+                                <span>Sürekli fizyolojik sinyal analizi</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-alarm-warning-line text-white"></i>
+                                </div>
+                                <span>Erken uyarı sistemleri</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-home-heart-line text-white"></i>
+                                </div>
+                                <span>Yoğun bakım, ameliyathane ve evde bakım</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-time-line text-white"></i>
+                                </div>
+                                <span>Gerçek zamanlı izleme sistemleri</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Areas -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Uygulama Alanlarımız</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Biyomedikal sinyal işleme alanında yapay zeka destekli çözümler geliştirdiğimiz temel uygulama alanları
+                </p>
+            </div>
+            
+            <div class="application-grid">
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-heart-pulse-line text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Kardiyak Aritmı Tespiti</h3>
+                    <p class="text-gray-600">Kalp ritmi analizi ve aritmı tespit algoritmaları</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-brain-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Epilepsi Nöbet Tahmini</h3>
+                    <p class="text-gray-600">EEG analizi ile erken uyarı sistemleri</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-lungs-line text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Solunum İzleme</h3>
+                    <p class="text-gray-600">Solunum yetmezliği ve apne tespit algoritmaları</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-medicine-bottle-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Kan Basıncı Analizi</h3>
+                    <p class="text-gray-600">Hipertansif kriz öngörüsü ve değişim analizi</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-pulse-line text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Oksijen Satürasyonu</h3>
+                    <p class="text-gray-600">Hipoksi uyarıları ve oksijen düşüklüğü tespiti</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-sound-module-line text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">EMG Kas Aktivitesi</h3>
+                    <p class="text-gray-600">Kas aktivitesi ve yorgunluk analizi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Applications -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Örnek Uygulamalarımız</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Gerçek klinik ortamlarda kullanılan ve test edilen yapay zeka destekli sinyal analiz sistemlerimiz
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Application 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-heart-pulse-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                <span class="number-highlight">94%</span> Doğruluk
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Kardiyak Aritmı Tespit Algoritması</h3>
+                        <p class="text-gray-600 mb-4">
+                            Sürekli EKG sinyallerini analiz ederek atrial fibrilasyon, ventriküler taşikardi ve diğer aritmileri gerçek zamanlı tespit eder ve acil müdahale uyarısı verir.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">EKG Analizi</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Gerçek Zamanlı</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Acil Uyarı</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            94% doğruluk ile aritmı tespiti
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-brain-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                23 Dakika Önceden
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Epilepsi Nöbet Tahmin Sistemi</h3>
+                        <p class="text-gray-600 mb-4">
+                            EEG sinyallerindeki prekital değişiklikleri analiz ederek epilepsi nöbetlerini ortalama 23 dakika önceden %89 sensitivite ile tahmin eder.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">EEG Analizi</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Prekital Tespit</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Erken Uyarı</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            %89 sensitivite ile nöbet tahmini
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-lungs-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                2 Saat Önceden
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Solunum Yetmezliği Erken Uyarı Platformu</h3>
+                        <p class="text-gray-600 mb-4">
+                            Solunum hızı, tidal volüm ve oksijen satürasyonu verilerini entegre ederek solunum yetmezliği gelişimini 2 saat önceden öngörür.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Solunum Analizi</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Entegre Veriler</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Prediktif Model</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            %87 doğruluk ile erken öngörü
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-dashboard-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Çok Parametreli
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Çok Parametreli Vital Bulgu İzleme Sistemi</h3>
+                        <p class="text-gray-600 mb-4">
+                            Kalp hızı, kan basıncı, solunum hızı ve vücut sıcaklığı sinyallerini eş zamanlı analiz ederek kritik değişiklikleri tespit eder.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Vital Bulgular</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Eş Zamanlı</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Kritik Tespit</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            %92 hassasiyet ile durum tespiti
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakeholders -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Paydaşlarımız</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Multidisipliner yaklaşımımızla sağlık ve mühendislik alanlarından uzmanlarla işbirliği yapıyoruz
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Health Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-heart-pulse-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Sağlık Paydaşları</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-heart-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Kardiyoloji</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-brain-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Nöroloji</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-medicine-bottle-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Anestezi</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-hospital-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Yoğun Bakım</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-lungs-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Göğüs Hastalıkları</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-moon-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Uyku Tıbbı</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Engineering Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-computer-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Mühendislik Paydaşları</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-cpu-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Biyomedikal Müh.</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-pulse-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Sinyal İşleme</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-code-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Bilgisayar Müh.</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-line-chart-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Zaman Serisi</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-robot-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Makine Öğrenmesi</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-sensor-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Sensör Teknolojileri</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Focus -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Araştırma ve Geliştirme Odakları</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Biyomedikal sinyal işleme alanında yapay zeka teknolojilerinin geliştirilmesi için odaklandığımız temel araştırma konuları
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-line-chart-line text-primary mr-3"></i>
+                            Zaman Serisi Analizi
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Fizyolojik sinyallerin zamana bağlı değişimlerini anlamak ve gelecekteki durumları tahmin etmek için kritik önem taşır. Sinyallerdeki periyodik değişimleri, trend analizi ve mevsimsel dalgalanmaları tespit ederek hastalık progresyonunu öngörmeye yardımcı olur.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Değer:</strong> Hastalık progresyonu öngörüsü ve trend analizi
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-sound-module-line text-primary mr-3"></i>
+                            Sinyal Gürültü Filtresi
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Ham biyomedikal sinyallerin kalitesini artırmak ve klinik olarak anlamlı bilgileri çıkarmak için gelişmiş filtreleme algoritmaları. Elektriksel gürültü, hareket artefaktları ve diğer bozucu faktörleri minimuma indiren sistemler.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Kritiklik:</strong> Mobil ve evde bakım ortamlarında özellikle kritik
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-alarm-warning-line text-primary mr-3"></i>
+                            Otomatik Anomali Tespiti
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Normal fizyolojik sinyallerden sapmaları otomatik olarak tespit eden sistemler. Her hastanın kendine özgü sinyal desenlerini öğrenen ve buna göre kişiselleştirilmiş anomali tespiti yapan algoritmalar.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Avantaj:</strong> Kritik durumları kaçırma riskini minimize eder
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-merge-cells-horizontal text-primary mr-3"></i>
+                            Çok Kanallı Sinyal Entegrasyonu
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Farklı fizyolojik parametrelerden gelen bilgileri birleştirerek daha kapsamlı sağlık durumu değerlendirmesi. EKG, solunum sinyali ve kan basıncı verilerinin entegrasyonu ile holistik yaklaşım sağlanır.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>İnovasyon:</strong> Tek parametreye dayalı sistemlerin kaçırabileceği durumları tespit
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-fingerprint-line text-primary mr-3"></i>
+                            Sinyal Tabanlı Fenotipleme
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Hastalık alt tiplerini ve hasta gruplarını fizyolojik sinyal özelliklerine göre sınıflandırma. Kişiselleştirilmiş tıp uygulamalarında hastalık progresyonunu tahmin etmek ve tedavi yanıtını öngörmek için kullanılır.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Gelecek:</strong> Kişiselleştirilmiş tıp uygulamalarında kritik rol
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-shield-check-line text-primary mr-3"></i>
+                            Etik ve Güvenlik Protokolleri
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Fizyolojik sinyallerin hassas kişisel veriler olması nedeniyle güvenli işleme, saklama ve paylaşım protokolleri. Hasta mahremiyetini korurken klinik fayda sağlayan sistemlerin tasarlanması.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Prensipler:</strong> Güvenlik ve mahremiyet öncelikli tasarım
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Applications -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Diğer Örnek Uygulamalar</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Geliştirdiğimiz diğer özel sinyal analiz sistemleri ve uygulama alanları
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Application 5 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-32 bg-gradient-to-br from-yellow-500 to-orange-500 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-medicine-bottle-line text-4xl text-white/80"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">Anestezi Derinliği Monitörü</h3>
+                        <p class="text-gray-600 mb-4">
+                            EEG ve EMG sinyallerini analiz ederek cerrahi anestezi derinliğini sürekli hesaplar ve optimal dozaj önerir.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">EEG/EMG</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Cerrahi</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 6 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-32 bg-gradient-to-br from-indigo-500 to-purple-500 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-moon-line text-4xl text-white/80"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">Uyku Apne Tespit Algoritması</h3>
+                        <p class="text-gray-600 mb-4">
+                            Solunum sinyalleri ve oksijen satürasyonu analizi ile obstrüktif uyku apne episodlarını tespit eder.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Solunum</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">91% Doğruluk</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 7 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-32 bg-gradient-to-br from-green-500 to-teal-500 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-sound-module-line text-4xl text-white/80"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">Kas Yorgunluğu Analiz Sistemi</h3>
+                        <p class="text-gray-600 mb-4">
+                            EMG sinyallerindeki frekans spektrumu değişimlerini analiz ederek kas yorgunluğunu objektif olarak ölçer.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">EMG</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Rehabilitasyon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Etki ve Başarılarımız</h2>
+                <p class="text-blue-100 max-w-3xl mx-auto">
+                    Çalışma grubumuzun biyomedikal sinyal işleme alanında elde ettiği somut başarılar ve klinik etkiler
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">12+</div>
+                    <div class="text-blue-100 text-lg">Aktif Proje</div>
+                    <div class="text-blue-200 text-sm mt-1">Farklı sinyal modaliteleri</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">18+</div>
+                    <div class="text-blue-100 text-lg">Araştırmacı</div>
+                    <div class="text-blue-200 text-sm mt-1">Multidisipliner ekip</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">91%</div>
+                    <div class="text-blue-100 text-lg">Ortalama Doğruluk</div>
+                    <div class="text-blue-200 text-sm mt-1">Klinik sistemlerde</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">250K+</div>
+                    <div class="text-blue-100 text-lg">Analiz Edilen Sinyal</div>
+                    <div class="text-blue-200 text-sm mt-1">Doğrulama sürecinde</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Features -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Özel Uygulama Alanları</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Biyomedikal sinyal işleme teknolojilerinin kullanıldığı özel hasta grupları ve uygulama ortamları
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-baby-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Yenidoğan Vital İzleme</h3>
+                    <p class="text-gray-600">
+                        Prematüre bebeklerde kalp hızı, solunum ve oksijen satürasyonu sinyallerini analiz ederek bradikardi ve apne episodlarını önceden tespit eder.
+                    </p>
+                </div>
+                
+                <div class="text-center p-8 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-home-heart-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Telemedicine Sistemleri</h3>
+                    <p class="text-gray-600">
+                        Uzaktan hasta izleme sistemleri ile evde bakım ortamlarında sürekli vital bulgu takibi ve erken uyarı sistemleri.
+                    </p>
+                </div>
+                
+                <div class="text-center p-8 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl">
+                    <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-elderly-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Geriatrik Hasta Analizi</h3>
+                    <p class="text-gray-600">
+                        Yaşlı hastalarda düşme riski değerlendirmesi, aktivite analizi ve kronik hastalık progresyon izleme sistemleri.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">İşbirliği Fırsatları</h2>
+            <p class="text-xl text-gray-600 mb-8">
+                Biyomedikal sinyal işleme alanında yapay zeka uygulamaları geliştirmek için bizimle işbirliği yapmak ister misiniz?
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="p-6 bg-blue-50 rounded-xl">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-hospital-line text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Klinik İşbirlikleri</h3>
+                    <p class="text-gray-600 text-sm">Hastaneler ve yoğun bakım ünitelerinde gerçek sinyal verilerle sistem geliştirme</p>
+                </div>
+                
+                <div class="p-6 bg-green-50 rounded-xl">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-graduation-cap-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Akademik Projeler</h3>
+                    <p class="text-gray-600 text-sm">Sinyal işleme ve makine öğrenmesi alanında araştırma projeleri</p>
+                </div>
+                
+                <div class="p-6 bg-purple-50 rounded-xl">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-building-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Teknoloji Ortaklıkları</h3>
+                    <p class="text-gray-600 text-sm">Tıbbi cihaz üreticileri ile sinyal analiz algoritmaları entegrasyonu</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../index.html#contact" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-primary/90 transition">
+                    İletişime Geçin
+                </a>
+                <a href="../index.html#research" class="border border-primary text-primary px-8 py-3 rounded-button font-medium hover:bg-primary hover:text-white transition">
+                    Diğer Çalışma Grupları
+                </a>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer Placeholder -->
+    <div id="footer-placeholder" class="loading-placeholder"></div>
+
+    <!-- JavaScript Dosyaları -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/components.js"></script>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card-hover, .research-focus-item, .stakeholder-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

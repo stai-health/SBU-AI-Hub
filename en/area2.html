@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Decision Support Systems AI Working Group - SBU-AI Hub</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0056a4',
+                        secondary: '#4a90e2',
+                        accent: '#2563eb'
+                    },
+                    borderRadius: {
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+     <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,86,164,0.9) 0%, rgba(74,144,226,0.8) 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 86, 164, 0.15);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #0056a4, #4a90e2);
+            border-radius: 2px;
+        }
+        
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .stakeholder-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .stakeholder-card:hover {
+            border-color: #0056a4;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #0056a4 0%, #4a90e2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+        
+        .research-focus-item {
+            border-left: 4px solid #0056a4;
+            background: linear-gradient(90deg, rgba(0,86,164,0.05) 0%, transparent 100%);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .number-highlight {
+            background: linear-gradient(135deg, #0056a4, #4a90e2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+        }
+        
+        /* Loading placeholder style */
+        .loading-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            min-height: 80px;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-white font-sans">
+    
+    <!-- Header Placeholder -->
+    <div id="header-placeholder" class="loading-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0" style="background-image: url('https://media.licdn.com/dms/image/v2/D4D12AQHjwwHm4yI2SQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1732373001305?e=2147483647&v=beta&t=OT6zLUxA-u63nCqNYg1g4L5FeJtcPsuUe6MYhhBQnB0'); background-size: cover; background-position: center; opacity: 0.1;"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Clinical Decision Support Systems
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto">
+                    Artificial Intelligence Working Group
+                </p>
+                <p class="text-lg text-blue-50 max-w-3xl mx-auto leading-relaxed">
+                    Multidisciplinary R&D unit that coordinates the design, validation and integration of artificial intelligence-based systems developed to support clinical decision processes
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 section-title">About Our Working Group</h2>
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <p class="text-lg">
+                            Clinical decision support systems can be thought of as digital assistants of modern medicine. We produce solutions that increase patient safety by analyzing <strong>electronic health records, laboratory data, vital signs and clinical notes</strong>.
+                        </p>
+                        <p>
+                            Our systems are designed as <strong>"assistant algorithms" that help physicians but do not take over decision authority</strong>. This approach supports human expertise while ensuring that clinical responsibility remains with the physician.
+                        </p>
+                        <p>
+                            The purpose of our group is to develop artificial intelligence-supported systems to <strong>support diagnosis-treatment decisions and optimize clinical workflows</strong>. These systems increase patient safety while accelerating and improving physicians' decision-making processes.
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="highlight-box p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Our Core Approach</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-shield-check-line text-white"></i>
+                                </div>
+                                <span>Support prioritizing patient safety</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-user-heart-line text-white"></i>
+                                </div>
+                                <span>Systems that support physicians, not replace them</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-time-line text-white"></i>
+                                </div>
+                                <span>Real-time risk analysis and alerts</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-database-2-line text-white"></i>
+                                </div>
+                                <span>Multi-source data integration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Decision Flow -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Decision Support Process</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Interactive flow showing how our AI-supported clinical decision process works
+                </p>
+            </div>
+            
+            <div class="decision-flow p-8 rounded-2xl">
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 pulse-animation">
+                            <i class="ri-database-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Data Collection</h3>
+                        <p class="text-sm text-gray-600">EHR, laboratory, vital signs, clinical notes</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-cpu-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">AI Analysis</h3>
+                        <p class="text-sm text-gray-600">Machine learning and pattern recognition</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-alarm-warning-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Risk Detection</h3>
+                        <p class="text-sm text-gray-600">Early warning and risk scoring</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-user-heart-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Clinical Decision</h3>
+                        <p class="text-sm text-gray-600">Physician assessment and final decision</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Areas -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Our Application Areas</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Critical medical areas where we develop clinical decision support systems
+                </p>
+            </div>
+            
+            <div class="application-grid">
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover border-l-4 border-red-500">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-heart-pulse-line text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Critical Condition Early Warning</h3>
+                    <p class="text-gray-600 mb-3">Early detection of sepsis, organ failure and critical conditions</p>
+                    <div class="risk-indicator px-3 py-1 rounded-full text-sm font-medium inline-block">
+                        High Risk Area
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover border-l-4 border-blue-500">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-bar-chart-2-line text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Risk Scoring</h3>
+                    <p class="text-gray-600 mb-3">Patient condition stratification and risk assessment</p>
+                    <div class="tech-tag px-3 py-1 rounded-full text-sm">Machine Learning</div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover border-l-4 border-green-500">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-sort-asc text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Automated Triage</h3>
+                    <p class="text-gray-600 mb-3">Patient prioritization and urgency determination</p>
+                    <div class="success-box px-3 py-1 rounded-full text-sm font-medium inline-block">
+                        Operational Efficiency
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover border-l-4 border-purple-500">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-medicine-bottle-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Drug Interaction</h3>
+                    <p class="text-gray-600 mb-3">Side effect prediction and safety warning systems</p>
+                    <div class="warning-box px-3 py-1 rounded-full text-sm font-medium inline-block">
+                        Safety Critical
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover border-l-4 border-indigo-500">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-file-text-line text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Clinical Note Analysis</h3>
+                    <p class="text-gray-600 mb-3">Automatic information extraction and document analysis</p>
+                    <div class="tech-tag px-3 py-1 rounded-full text-sm">Natural Language Processing</div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover border-l-4 border-orange-500">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-hotel-bed-line text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Bed Management</h3>
+                    <p class="text-gray-600 mb-3">Resource optimization and length of stay prediction</p>
+                    <div class="tech-tag px-3 py-1 rounded-full text-sm">Prediction Models</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Example Applications -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Example Applications</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Our AI-supported decision support systems actively used in clinical settings
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Application 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-surgical-mask-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Risk Stratification
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Surgical Risk Assessment Algorithm</h3>
+                        <p class="text-gray-600 mb-4">
+                            Calculates postoperative complication risk based on patient age, comorbidities, planned surgical procedure and preoperative findings, and suggests risk reduction strategies.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Preoperative Analysis</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Risk Scoring</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Complication Prediction</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            28% reduction in postoperative complications
+                        </div>
+                    </div>
+                </div>
+                 <!-- Application 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-virus-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-green-700/60 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                4 Hours Early Warning
+                            </span>
+                        </div>
+                        
+                    </div>
+                     <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Sepsis Early Warning System</h3>
+                        <p class="text-gray-600 mb-4">
+                            Analyzes vital signs, laboratory values and clinical notes to calculate sepsis development risk in real time and provides early warning with high accuracy.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Real-time Monitoring</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Vital Signs</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Lab Integration</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            23% reduction in mortality rate achieved
+                        </div>
+                   
+                    </div>
+                </div>
+                 <!-- Application 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-drop-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                <span class="number-highlight">91%</span> Sensitivity
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="bg-blue-700/60 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                12 Hours Early
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Acute Kidney Injury Prediction Algorithm</h3>
+                        <p class="text-gray-600 mb-4">
+                            Predicts acute kidney injury risk with high sensitivity by analyzing creatinine changes, drug use and comorbidity information.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Creatinine Analysis</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Drug Monitoring</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Risk Modeling</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            35% reduction in dialysis need
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-medicine-bottle-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Real-time Control
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Drug Interaction Control System</h3>
+                        <p class="text-gray-600 mb-4">
+                            Analyzes potential interactions between patient history, current medications and new prescription recommendations, provides safety warnings and suggests alternative treatment options.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Drug Database</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Interaction Check</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Safety Alerts</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            42% reduction in drug side effects
+                        </div>
+                    </div>
+                </div>
+                
+ 
+            </div>
+        </div>
+    </section>
+
+   <!-- Stakeholders -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Our Stakeholders</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    We collaborate with experts from health and technology fields to develop clinical decision support systems
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Health Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-stethoscope-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Healthcare Stakeholders</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-hospital-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Internal Medicine</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-surgical-mask-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Surgery</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-truck-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Emergency Medicine</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-syringe-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Anesthesia</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-heart-pulse-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Intensive Care</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-nurse-line text-2xl text-accent mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Nursing</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technology Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-code-s-slash-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Technology Stakeholders</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-computer-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Computer Engineering</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-database-2-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Data Science</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-robot-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Machine Learning</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-chat-3-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Natural Language Processing</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-line-chart-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Time Series</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-settings-3-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">System Integration</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Research Focus -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Research and Development Focus</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Key research topics we focus on to improve the reliability and effectiveness of clinical decision support systems
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-lightbulb-line text-accent mr-3"></i>
+                            Explainable Artificial Intelligence
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            We make the decision-making processes of algorithms transparent. Clinicians should be able to understand why the system makes a particular recommendation and evaluate the rationale behind this recommendation.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Goal:</strong> Increase clinical trust and acceptability
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-merge-cells-horizontal text-accent mr-3"></i>
+                            Hybrid Data Integration
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            We bridge structured data (laboratory, vital signs) with unstructured data (doctor notes, discharge summaries). We extract meaningful information from clinical texts using natural language processing.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Innovation:</strong> Creating comprehensive patient profiles
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-time-line text-accent mr-3"></i>
+                            Time Series Analysis
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            We predict future risks by monitoring changes in the patient's condition. This approach is critically important especially in intensive care and emergency medicine applications.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Application:</strong> Early detection of progressive deterioration
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-shield-check-line text-accent mr-3"></i>
+                            Clinical Validation
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            We ensure that developed systems are tested in real clinical environments and feedback from health professionals is received. Continuous monitoring and improvement of system performance is targeted.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Process:</strong> Multi-center prospective studies
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-user-heart-line text-accent mr-3"></i>
+                            Ethics and Patient Safety
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            We develop ethical frameworks to ensure that systems protect patient privacy, minimize bias, and support but not replace clinical decisions.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Principles:</strong> Transparency, fairness, accountability
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-settings-3-line text-accent mr-3"></i>
+                            System Integration
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            We provide decision support without disrupting clinical workflows by ensuring seamless integration with existing hospital information systems. We target user-friendly interfaces and minimal learning curve.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Technology:</strong> API-based microservice architecture
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Real-time Dashboard Demo -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Real-time Decision Support Dashboard</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Example of interactive dashboard used in clinical settings
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-accent to-primary p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Patient Status Monitor</h3>
+                    <p class="text-blue-100">Real-time risk analysis and alert system</p>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- Risk Alerts -->
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">Active Alerts</h4>
+                            
+                            <div class="warning-box p-4 rounded-lg">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-semibold">Sepsis Risk</span>
+                                    <span class="text-sm">Bed 302</span>
+                                </div>
+                                <div class="text-sm">Risk Score: <strong>85%</strong></div>
+                                <div class="text-xs mt-1">Last update: 2 min ago</div>
+                            </div>
+                            
+                            <div class="risk-indicator p-4 rounded-lg">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-semibold">AKI Risk</span>
+                                    <span class="text-sm">Bed 205</span>
+                                </div>
+                                <div class="text-sm">Risk Score: <strong>72%</strong></div>
+                                <div class="text-xs mt-1">Last update: 5 min ago</div>
+                            </div>
+                            
+                            <div class="success-box p-4 rounded-lg">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-semibold">Recovery Trend</span>
+                                    <span class="text-sm">Bed 108</span>
+                                </div>
+                                <div class="text-sm">Discharge Readiness</div>
+                                <div class="text-xs mt-1">Recommended: 24 hours</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Patient Stats -->
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">Patient Statistics</h4>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-red-600">8</div>
+                                    <div class="text-sm text-gray-600">High Risk</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-yellow-600">15</div>
+                                    <div class="text-sm text-gray-600">Medium Risk</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-green-600">42</div>
+                                    <div class="text-sm text-gray-600">Low Risk</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- System Status -->
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">System Status</h4>
+                            
+                            <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                                <span class="text-sm font-medium">AI Modules</span>
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                                    <span class="text-sm text-green-700">Active</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                                <span class="text-sm font-medium">Data Flow</span>
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                                    <span class="text-sm text-green-700">Normal</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                                <span class="text-sm font-medium">Last Update</span>
+                                <span class="text-sm text-blue-700">30 sec ago</span>
+                            </div>
+                            
+                            <div class="text-center pt-4">
+                                <div class="text-lg font-bold text-gray-900">99.7%</div>
+                                <div class="text-sm text-gray-600">System Uptime</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-16 bg-gradient-to-r from-accent to-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Impact and Achievements</h2>
+                <p class="text-blue-100 max-w-3xl mx-auto">
+                    Concrete impacts of our clinical decision support systems on patient safety and clinical outcomes
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">12+</div>
+                    <div class="text-blue-100 text-lg">Active Systems</div>
+                    <div class="text-blue-200 text-sm mt-1">In different clinical areas</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">18+</div>
+                    <div class="text-blue-100 text-lg">Researchers</div>
+                    <div class="text-blue-200 text-sm mt-1">Multidisciplinary team</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">89%</div>
+                    <div class="text-blue-100 text-lg">Average Accuracy</div>
+                    <div class="text-blue-200 text-sm mt-1">In risk prediction models</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">35%</div>
+                    <div class="text-blue-100 text-lg">Complication Reduction</div>
+                    <div class="text-blue-200 text-sm mt-1">In pilot applications</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Collaboration Opportunities</h2>
+            <p class="text-xl text-gray-600 mb-8">
+                Would you like to collaborate with us to develop clinical decision support systems?
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="p-6 bg-blue-50 rounded-xl">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-hospital-line text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Clinical Pilot Studies</h3>
+                    <p class="text-gray-600 text-sm">System testing and validation in real environments with hospitals</p>
+                </div>
+                
+                <div class="p-6 bg-green-50 rounded-xl">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-database-2-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Data Partnerships</h3>
+                    <p class="text-gray-600 text-sm">Model development and improvement with anonymous clinical data</p>
+                </div>
+                
+                <div class="p-6 bg-purple-50 rounded-xl">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-code-s-slash-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Technology Transfer</h3>
+                    <p class="text-gray-600 text-sm">Productization and commercialization of developed algorithms</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../index.html#contact" class="bg-accent text-white px-8 py-3 rounded-button font-medium hover:bg-accent/90 transition">
+                    Contact Us
+                </a>
+                <a href="../index.html#research" class="border border-accent text-accent px-8 py-3 rounded-button font-medium hover:bg-accent hover:text-white transition">
+                    Other Working Groups
+                </a>
+            </div>
+        </div>
+    </section>
+
+     <!-- Footer Placeholder -->
+    <div id="footer-placeholder" class="loading-placeholder"></div>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/components.js"></script>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card-hover, .research-focus-item, .stakeholder-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

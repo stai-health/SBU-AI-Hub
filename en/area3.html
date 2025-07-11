@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biomedical Signal Processing and Monitoring AI Working Group - SBU-AI Hub</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0056a4',
+                        secondary: '#4a90e2'
+                    },
+                    borderRadius: {
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,86,164,0.9) 0%, rgba(74,144,226,0.8) 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 86, 164, 0.15);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #0056a4, #4a90e2);
+            border-radius: 2px;
+        }
+        
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .stakeholder-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .stakeholder-card:hover {
+            border-color: #0056a4;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #0056a4 0%, #4a90e2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+        
+        .research-focus-item {
+            border-left: 4px solid #0056a4;
+            background: linear-gradient(90deg, rgba(0,86,164,0.05) 0%, transparent 100%);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .number-highlight {
+            background: linear-gradient(135deg, #0056a4, #4a90e2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+        }
+        
+        /* Loading placeholder style */
+        .loading-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            min-height: 80px;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-white font-sans">
+    
+    <!-- Header Placeholder -->
+    <div id="header-placeholder" class="loading-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); background-size: cover; background-position: center; opacity: 0.15;"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Biomedical Signal Processing and Monitoring
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto">
+                    AI Working Group
+                </p>
+                <p class="text-lg text-blue-50 max-w-4xl mx-auto leading-relaxed">
+                    A multidisciplinary R&D unit that aims to analyze physiological signals from the human body (ECG, EEG, EMG, respiration, blood pressure, oxygen saturation, etc.) using artificial intelligence methods and integrate them into clinical decision support systems.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 section-title">About Our Working Group</h2>
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <p class="text-lg">
+                            Biomedical signals can be thought of as a digital language that reflects the instantaneous state of our body. Physiological signals such as heartbeats, brain waves, muscle activity, and breathing rhythm provide continuous information flow about our health status.
+                        </p>
+                        <p>
+                            Artificial intelligence technologies can understand these complex signal data and detect deviations from normal patterns. This process is like an experienced musician instantly noticing a wrong-playing instrument in an orchestra.
+                        </p>
+                        <p>
+                            The main goal of our group is to <strong>develop continuous patient monitoring, early warning systems, and signal-based disease prediction models using time series analysis, signal processing, and machine learning techniques.</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="highlight-box p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Our Core Approach</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-pulse-line text-white"></i>
+                                </div>
+                                <span>Continuous physiological signal analysis</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-alarm-warning-line text-white"></i>
+                                </div>
+                                <span>Early warning systems</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-home-heart-line text-white"></i>
+                                </div>
+                                <span>Intensive care, operating room, and home care</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-time-line text-white"></i>
+                                </div>
+                                <span>Real-time monitoring systems</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Areas -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Our Application Areas</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Main application areas where we develop AI-supported solutions in the field of biomedical signal processing
+                </p>
+            </div>
+            
+            <div class="application-grid">
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-heart-pulse-line text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Cardiac Arrhythmia Detection</h3>
+                    <p class="text-gray-600">Heart rhythm analysis and arrhythmia detection algorithms</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-brain-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Epileptic Seizure Prediction</h3>
+                    <p class="text-gray-600">Early warning systems through EEG analysis</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-lungs-line text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Respiratory Monitoring</h3>
+                    <p class="text-gray-600">Respiratory failure and apnea detection algorithms</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-medicine-bottle-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Blood Pressure Analysis</h3>
+                    <p class="text-gray-600">Hypertensive crisis prediction and change analysis</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-pulse-line text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Oxygen Saturation</h3>
+                    <p class="text-gray-600">Hypoxia alerts and oxygen deficiency detection</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-sound-module-line text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">EMG Muscle Activity</h3>
+                    <p class="text-gray-600">Muscle activity and fatigue analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Applications -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Our Example Applications</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    AI-supported signal analysis systems used and tested in real clinical environments
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Application 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-heart-pulse-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                <span class="number-highlight">94%</span> Accuracy
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Cardiac Arrhythmia Detection Algorithm</h3>
+                        <p class="text-gray-600 mb-4">
+                            Analyzes continuous ECG signals to detect atrial fibrillation, ventricular tachycardia, and other arrhythmias in real-time and provides emergency intervention alerts.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">ECG Analysis</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Real-time</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Emergency Alert</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            94% accuracy in arrhythmia detection
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-brain-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                23 Minutes in Advance
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Epileptic Seizure Prediction System</h3>
+                        <p class="text-gray-600 mb-4">
+                            Analyzes preictal changes in EEG signals to predict epileptic seizures an average of 23 minutes in advance with 89% sensitivity.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">EEG Analysis</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Preictal Detection</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Early Warning</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            89% sensitivity in seizure prediction
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-lungs-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                2 Hours in Advance
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Respiratory Failure Early Warning Platform</h3>
+                        <p class="text-gray-600 mb-4">
+                            Integrates respiratory rate, tidal volume, and oxygen saturation data to predict respiratory failure development 2 hours in advance.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Respiratory Analysis</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Integrated Data</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Predictive Model</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            87% accuracy in early prediction
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-dashboard-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Multi-parameter
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Multi-parameter Vital Signs Monitoring System</h3>
+                        <p class="text-gray-600 mb-4">
+                            Simultaneously analyzes heart rate, blood pressure, respiratory rate, and body temperature signals to detect critical changes.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Vital Signs</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Simultaneous</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Critical Detection</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            92% precision in condition detection
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakeholders -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Our Stakeholders</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    With our multidisciplinary approach, we collaborate with experts from health and engineering fields
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Health Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-heart-pulse-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Health Stakeholders</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-heart-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Cardiology</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-brain-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Neurology</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-medicine-bottle-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Anesthesia</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-hospital-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Intensive Care</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-lungs-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Pulmonology</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-moon-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Sleep Medicine</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Engineering Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-computer-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Engineering Stakeholders</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-cpu-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Biomedical Eng.</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-pulse-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Signal Processing</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-code-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Computer Eng.</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-line-chart-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Time Series</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-robot-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Machine Learning</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-sensor-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Sensor Technologies</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Focus -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Research and Development Focus Areas</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Main research topics we focus on for the development of artificial intelligence technologies in the field of biomedical signal processing
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-line-chart-line text-primary mr-3"></i>
+                            Time Series Analysis
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Understanding time-dependent changes in physiological signals and predicting future states is critically important. It helps predict disease progression by detecting periodic changes, trend analysis, and seasonal fluctuations in signals.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Value:</strong> Disease progression prediction and trend analysis
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-sound-module-line text-primary mr-3"></i>
+                            Signal Noise Filtering
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Advanced filtering algorithms to improve the quality of raw biomedical signals and extract clinically meaningful information. Systems that minimize electrical noise, motion artifacts, and other disruptive factors.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Criticality:</strong> Especially critical in mobile and home care environments
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-alarm-warning-line text-primary mr-3"></i>
+                            Automatic Anomaly Detection
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Systems that automatically detect deviations from normal physiological signals. Algorithms that learn each patient's unique signal patterns and perform personalized anomaly detection accordingly.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Advantage:</strong> Minimizes the risk of missing critical situations
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-merge-cells-horizontal text-primary mr-3"></i>
+                            Multi-channel Signal Integration
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Combining information from different physiological parameters for more comprehensive health status assessment. A holistic approach is achieved through integration of ECG, respiratory signals, and blood pressure data.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Innovation:</strong> Detects situations that single-parameter systems might miss
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-fingerprint-line text-primary mr-3"></i>
+                            Signal-based Phenotyping
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Classifying disease subtypes and patient groups according to physiological signal characteristics. Used in personalized medicine applications to predict disease progression and anticipate treatment response.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Future:</strong> Critical role in personalized medicine applications
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-shield-check-line text-primary mr-3"></i>
+                            Ethics and Security Protocols
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Since physiological signals are sensitive personal data, secure processing, storage, and sharing protocols are essential. Designing systems that provide clinical benefit while protecting patient privacy.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Principles:</strong> Security and privacy-first design
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Applications -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Other Example Applications</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Other specialized signal analysis systems and application areas we have developed
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Application 5 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-32 bg-gradient-to-br from-yellow-500 to-orange-500 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-medicine-bottle-line text-4xl text-white/80"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">Anesthesia Depth Monitor</h3>
+                        <p class="text-gray-600 mb-4">
+                            Analyzes EEG and EMG signals to continuously calculate surgical anesthesia depth and recommends optimal dosage.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">EEG/EMG</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Surgery</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 6 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-32 bg-gradient-to-br from-indigo-500 to-purple-500 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-moon-line text-4xl text-white/80"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">Sleep Apnea Detection Algorithm</h3>
+                        <p class="text-gray-600 mb-4">
+                            Detects obstructive sleep apnea episodes through respiratory signal and oxygen saturation analysis.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Respiratory</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">91% Accuracy</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 7 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-32 bg-gradient-to-br from-green-500 to-teal-500 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-sound-module-line text-4xl text-white/80"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">Muscle Fatigue Analysis System</h3>
+                        <p class="text-gray-600 mb-4">
+                            Objectively measures muscle fatigue by analyzing frequency spectrum changes in EMG signals.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">EMG</span>
+                            <span class="tech-tag px-2 py-1 rounded-full text-xs">Rehabilitation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Impact and Achievements</h2>
+                <p class="text-blue-100 max-w-3xl mx-auto">
+                    Concrete achievements and clinical impacts our working group has achieved in the field of biomedical signal processing
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">12+</div>
+                    <div class="text-blue-100 text-lg">Active Projects</div>
+                    <div class="text-blue-200 text-sm mt-1">Different signal modalities</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">18+</div>
+                    <div class="text-blue-100 text-lg">Researchers</div>
+                    <div class="text-blue-200 text-sm mt-1">Multidisciplinary team</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">91%</div>
+                    <div class="text-blue-100 text-lg">Average Accuracy</div>
+                    <div class="text-blue-200 text-sm mt-1">In clinical systems</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">250K+</div>
+                    <div class="text-blue-100 text-lg">Analyzed Signals</div>
+                    <div class="text-blue-200 text-sm mt-1">In validation process</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Features -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Special Application Areas</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Special patient groups and application environments where biomedical signal processing technologies are used
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-baby-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Neonatal Vital Monitoring</h3>
+                    <p class="text-gray-600">
+                        Analyzes heart rate, respiration, and oxygen saturation signals in premature babies to detect bradycardia and apnea episodes in advance.
+                    </p>
+                </div>
+                
+                <div class="text-center p-8 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-home-heart-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Telemedicine Systems</h3>
+                    <p class="text-gray-600">
+                        Remote patient monitoring systems with continuous vital sign tracking and early warning systems in home care environments.
+                    </p>
+                </div>
+                
+                <div class="text-center p-8 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl">
+                    <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ri-elderly-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Geriatric Patient Analysis</h3>
+                    <p class="text-gray-600">
+                        Fall risk assessment, activity analysis, and chronic disease progression monitoring systems in elderly patients.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Collaboration Opportunities</h2>
+            <p class="text-xl text-gray-600 mb-8">
+                Would you like to collaborate with us to develop artificial intelligence applications in the field of biomedical signal processing?
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="p-6 bg-blue-50 rounded-xl">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-hospital-line text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Clinical Collaborations</h3>
+                    <p class="text-gray-600 text-sm">System development with real signal data in hospitals and intensive care units</p>
+                </div>
+                
+                <div class="p-6 bg-green-50 rounded-xl">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-graduation-cap-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Academic Projects</h3>
+                    <p class="text-gray-600 text-sm">Research projects in signal processing and machine learning fields</p>
+                </div>
+                
+                <div class="p-6 bg-purple-50 rounded-xl">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-building-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Technology Partnerships</h3>
+                    <p class="text-gray-600 text-sm">Signal analysis algorithm integration with medical device manufacturers</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../index.html#contact" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-primary/90 transition">
+                    Contact Us
+                </a>
+                <a href="../index.html#research" class="border border-primary text-primary px-8 py-3 rounded-button font-medium hover:bg-primary hover:text-white transition">
+                    Other Working Groups
+                </a>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer Placeholder -->
+    <div id="footer-placeholder" class="loading-placeholder"></div>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/components.js"></script>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card-hover, .research-focus-item, .stakeholder-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

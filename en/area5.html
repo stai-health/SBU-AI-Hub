@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genomics, Bioinformatics and Personalized Medicine AI Working Group - SBU-AI Hub</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0056a4',
+                        secondary: '#4a90e2'
+                    },
+                    borderRadius: {
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,86,164,0.9) 0%, rgba(74,144,226,0.8) 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 86, 164, 0.15);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #0056a4, #4a90e2);
+            border-radius: 2px;
+        }
+        
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .stakeholder-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .stakeholder-card:hover {
+            border-color: #0056a4;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #0056a4 0%, #4a90e2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+        
+        .research-focus-item {
+            border-left: 4px solid #0056a4;
+            background: linear-gradient(90deg, rgba(0,86,164,0.05) 0%, transparent 100%);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .number-highlight {
+            background: linear-gradient(135deg, #0056a4, #4a90e2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+        }
+        
+        /* Loading placeholder style */
+        .loading-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            min-height: 80px;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-white font-sans">
+    
+    <!-- Header Placeholder -->
+    <div id="header-placeholder" class="loading-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; opacity: 0.1;"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Genomics, Bioinformatics and<br>Personalized Medicine
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto">
+                    AI Working Group
+                </p>
+                <p class="text-lg text-blue-50 max-w-3xl mx-auto leading-relaxed">
+                    A multidisciplinary research and development unit coordinating the development of artificial intelligence applications in personalized diagnosis, treatment, and risk prediction processes based on individuals' genetic characteristics
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 section-title">About Our Working Group</h2>
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <p class="text-lg">
+                            The human genome can be thought of as a giant book consisting of 3 billion letters. This working group is like a research team trying to understand the effect of each letter in that book on health.
+                        </p>
+                        <p>
+                            Just like putting together pieces of a puzzle, we aim to produce health solutions specific to each individual by bringing genetic information together with clinical meaning. We work through processing genome sequencing data, genetic variant analysis, and identification of disease-related biomarkers.
+                        </p>
+                        <p>
+                            The main goal of our group is to <strong>support the transition from the traditional "same treatment for everyone" approach to the "unique treatment for everyone" paradigm</strong>. This process means not only technological development but also the personalization of medicine.
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="highlight-box p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Our Core Approach</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-dna-line text-white"></i>
+                                </div>
+                                <span>Analyze health effects of genetic variants</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-medicine-bottle-line text-white"></i>
+                                </div>
+                                <span>Personalized drug dosage calculation</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-search-line text-white"></i>
+                                </div>
+                                <span>Early diagnosis of rare diseases</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-team-line text-white"></i>
+                                </div>
+                                <span>Multi-omics data integration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Areas -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Our Application Areas</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Main application areas where we develop AI-supported solutions in genomics and bioinformatics
+                </p>
+            </div>
+            
+            <div class="application-grid">
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-dna-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Genome Sequencing Analysis</h3>
+                    <p class="text-gray-600">Genetic variant analysis and identification of disease-related biomarkers</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-search-2-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Rare Disease Diagnosis</h3>
+                    <p class="text-gray-600">Detection and diagnostic algorithms for genetic-origin rare diseases</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-microscope-line text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Cancer Genomics Analysis</h3>
+                    <p class="text-gray-600">Tumor profiling systems and targeted treatment selection</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-medicine-bottle-line text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Pharmacogenetic Analysis</h3>
+                    <p class="text-gray-600">Personalized drug dosage calculation and side effect prediction</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-heart-pulse-line text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Hereditary Risk Assessment</h3>
+                    <p class="text-gray-600">Disease risk analysis and genetic counseling support</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-merge-cells-horizontal text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Multi-Omics Integration</h3>
+                    <p class="text-gray-600">Integration of genomics, transcriptomics, proteomics, and metabolomics data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Applications -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Our Example Applications</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Our genomic artificial intelligence systems used and tested in real clinical environments
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Application 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-microscope-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                89% Accuracy
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Cancer Genome Profiling Platform</h3>
+                        <p class="text-gray-600 mb-4">
+                            Analyzes genome data obtained from tumor tissue to determine targeted treatment options with 89% accuracy and predicts drug resistance development risk.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Tumor Profiling</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Targeted Treatment</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Drug Resistance</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Genetic fingerprint analysis of cancer cells
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-medicine-bottle-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                150+ Drugs
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Pharmacogenetic Decision Support System</h3>
+                        <p class="text-gray-600 mb-4">
+                            Analyzes patient genetic profile to calculate optimal dosage for 150+ drugs, assesses side effect risk, and offers alternative drug recommendations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Dosage Calculation</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Side Effect Analysis</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Drug Recommendation</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Genetic-based explanation of different effects of the same drug
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-search-2-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                94% Accuracy
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Rare Disease Diagnosis Algorithm</h3>
+                        <p class="text-gray-600 mb-4">
+                            Integrates clinical findings and genetic test results to provide diagnostic recommendations with 94% accuracy among 7000+ rare diseases and reduces average diagnosis time from 6 months to 2 months.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">7000+ Diseases</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Fast Diagnosis</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Integrated Analysis</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Complex genetic puzzle solving system
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Application 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="ri-heart-pulse-line text-6xl text-white/80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                86% Sensitivity
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Cardiovascular Risk Genetic Scoring</h3>
+                        <p class="text-gray-600 mb-4">
+                            Uses polygenic risk scores to predict coronary artery disease risk with 86% sensitivity and recommends personalized prevention strategies.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Polygenic Score</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Risk Prediction</span>
+                            <span class="tech-tag px-3 py-1 rounded-full text-sm">Prevention Strategy</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <i class="ri-check-line text-green-500 mr-2"></i>
+                            Analysis of cumulative small effects of hundreds of genes
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Applications -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Other Application Examples</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-merge-cells-horizontal text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Multi-Omics Integration Platform</h3>
+                    <p class="text-gray-600 text-sm">Illuminates molecular mechanisms of complex diseases by combining genome, transcriptome, and proteome data.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-plant-line text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Microbiome-Nutrition Analysis</h3>
+                    <p class="text-gray-600 text-sm">Develops personalized nutrition recommendations based on gut microbiome profile and genetic characteristics.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-parent-line text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Prenatal Genetic Risk Assessment</h3>
+                    <p class="text-gray-600 text-sm">Analyzes maternal and paternal genetic data to calculate risk for 300+ genetic diseases.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-shield-line text-2xl text-cyan-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Immunogenetic Vaccine Response Prediction</h3>
+                    <p class="text-gray-600 text-sm">Predicts vaccine effectiveness by analyzing HLA typing and immune system gene variants.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakeholders -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Our Stakeholders</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    With our multidisciplinary approach, we collaborate with experts from health and engineering fields
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Health Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-dna-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Health Stakeholders</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-dna-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Medical Genetics</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-test-tube-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Molecular Biology</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-hospital-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Oncology</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-microscope-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Pathology</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-heart-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Internal Medicine</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-parent-line text-2xl text-primary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Gynecology & Obstetrics</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Engineering Stakeholders -->
+                <div class="stakeholder-card p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="ri-cpu-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Engineering Stakeholders</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-database-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Bioinformatics</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-code-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Computer Engineering</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-bar-chart-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Biostatistics</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-database-2-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Data Science</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-robot-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Machine Learning</div>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <i class="ri-flask-line text-2xl text-secondary mb-2"></i>
+                            <div class="text-sm font-medium text-gray-700">Molecular Modeling</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Focus -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 section-title inline-block">Research and Development Focus Areas</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Core research topics we focus on for the development of artificial intelligence technologies in genomics and personalized medicine
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-database-line text-primary mr-3"></i>
+                            High-Dimensional Omics Data Integration
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            By combining genomics (DNA sequence), transcriptomics (RNA expression), proteomics (protein levels), and metabolomics (metabolite concentrations) data, we reveal the complete picture of cellular processes.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Challenge:</strong> Like creating a city map while simultaneously observing streets, buildings, traffic flow, and people
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-line-chart-line text-primary mr-3"></i>
+                            Machine Learning and GWAS Analysis
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            In genome-wide association studies (GWAS), millions of genetic variants are tested. We use advanced correction methods to overcome the multiple testing problem and filter out results that appear significant by chance.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Innovation:</strong> AI algorithms that overcome statistical challenges
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-medicine-bottle-line text-primary mr-3"></i>
+                            Pharmacogenetic Algorithms
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Drug metabolism is a multifactorial process. We develop accurate dosage recommendations by modeling the complex interactions of multiple genes, age, gender, other drugs, and environmental factors.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Value:</strong> Determining the most suitable drug and dosage for each patient
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-search-2-line text-primary mr-3"></i>
+                            Rare Disease Diagnosis Systems
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Since there are more than 7000 rare diseases, algorithms intelligently combine phenotype (disease symptoms) and genotype (genetic variants) to reach accurate diagnosis. This process is similar to a thousand-piece jigsaw puzzle game.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Criticality:</strong> Improving quality of life through early and accurate diagnosis
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-shield-check-line text-primary mr-3"></i>
+                            Ethics and Security Protocols
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Genetic data can affect not only the individual but also their family and future generations. We develop comprehensive protocols on data security, informed consent procedures, and strategies to prevent genetic discrimination.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Future:</strong> Safe and ethical genomic medicine practices
+                        </div>
+                    </div>
+                    
+                    <div class="research-focus-item p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <i class="ri-stethoscope-line text-primary mr-3"></i>
+                            Clinical Decision Support Systems
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                            Bringing laboratory findings together with clinical meaning is critical. We develop systems that can manage the uncertainties provided by genetic profiles about disease risk and provide clear information to clinicians for making clear decisions.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <strong>Application:</strong> Clinical interpretation of genetic test results
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Impact and Achievements</h2>
+                <p class="text-blue-100 max-w-3xl mx-auto">
+                    Concrete achievements and clinical impacts of our working group in genomics and personalized medicine
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">12+</div>
+                    <div class="text-blue-100 text-lg">Active Projects</div>
+                    <div class="text-blue-200 text-sm mt-1">Different genomic applications</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">20+</div>
+                    <div class="text-blue-100 text-lg">Researchers</div>
+                    <div class="text-blue-200 text-sm mt-1">Multidisciplinary team</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">91%</div>
+                    <div class="text-blue-100 text-lg">Average Accuracy</div>
+                    <div class="text-blue-200 text-sm mt-1">In clinical systems</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">100K+</div>
+                    <div class="text-blue-100 text-lg">Analyzed Genomes</div>
+                    <div class="text-blue-200 text-sm mt-1">In validation process</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Collaboration Opportunities</h2>
+            <p class="text-xl text-gray-600 mb-8">
+                Would you like to collaborate with us to develop artificial intelligence applications in genomics and personalized medicine?
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="p-6 bg-blue-50 rounded-xl">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-hospital-line text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Clinical Collaborations</h3>
+                    <p class="text-gray-600 text-sm">System development with real patient data in collaboration with hospitals and genetic centers</p>
+                </div>
+                
+                <div class="p-6 bg-green-50 rounded-xl">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-graduation-cap-line text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Academic Projects</h3>
+                    <p class="text-gray-600 text-sm">Inter-university genomic research projects and joint publications</p>
+                </div>
+                
+                <div class="p-6 bg-purple-50 rounded-xl">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-building-line text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Industry Partnerships</h3>
+                    <p class="text-gray-600 text-sm">Genomic platform development and commercialization with biotechnology companies</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../index.html#contact" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-primary/90 transition">
+                    Get in Touch
+                </a>
+                <a href="../index.html#research" class="border border-primary text-primary px-8 py-3 rounded-button font-medium hover:bg-primary hover:text-white transition">
+                    Other Working Groups
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder" class="loading-placeholder"></div>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/components.js"></script>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card-hover, .research-focus-item, .stakeholder-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
