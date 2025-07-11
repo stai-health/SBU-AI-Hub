@@ -51,6 +51,7 @@ const HeaderTemplate = `
                 <li><a href="#hero" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Ana Sayfa</a></li>
                 <li><a href="#about" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Hakkımızda</a></li>
                 <li><a href="#research" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Araştırma Alanları</a></li>
+                <li><a href="#why-join" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Neden Katılmalısın?</a></li>
                 <li><a href="#projects" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Projeler</a></li>
                 <li><a href="#publications" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Yayınlar</a></li>
                 <li><a href="#team" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Ekibimiz</a></li>
@@ -77,6 +78,8 @@ const HeaderTemplate = `
                 <li><a href="#about" class="nav-link flex items-center text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10 rounded px-2 py-1.5 transition"><i class="ri-information-line mr-2 text-xl"></i> Hakkımızda</a></li>
                 <li><div class="h-px bg-gray-200 mx-2"></div></li>
                 <li><a href="#research" class="nav-link flex items-center text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10 rounded px-2 py-1.5 transition"><i class="ri-flask-line mr-2 text-xl"></i> Araştırma Alanları</a></li>
+                <li><div class="h-px bg-gray-200 mx-2"></div></li>
+                <li><a href="#why-join" class="nav-link flex items-center text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10 rounded px-2 py-1.5 transition"><i class="ri-question-line mr-2 text-xl"></i> Neden Katılmalısın?</a></li>
                 <li><div class="h-px bg-gray-200 mx-2"></div></li>
                 <li><a href="#projects" class="nav-link flex items-center text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10 rounded px-2 py-1.5 transition"><i class="ri-rocket-2-line mr-2 text-xl"></i> Projeler</a></li>
                 <li><div class="h-px bg-gray-200 mx-2"></div></li>
@@ -146,6 +149,7 @@ const FooterTemplate = `
                 <ul class="footer-links space-y-2">
                     <li><a href="/" class="text-gray-400 hover:text-white">Ana Sayfa</a></li>
                     <li><a href="/hakkimizda/" class="text-gray-400 hover:text-white">Hakkımızda</a></li>
+                    <li><a href="#why-join" class="text-gray-400 hover:text-white">Neden Katılmalısın?</a></li>
                     <li><a href="/arastirma/" class="text-gray-400 hover:text-white">Araştırma Alanları</a></li>
                     <li><a href="/projeler/" class="text-gray-400 hover:text-white">Projeler</a></li>
                     <li><a href="/yayinlar/" class="text-gray-400 hover:text-white">Yayınlar</a></li>

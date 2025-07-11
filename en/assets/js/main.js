@@ -1,11 +1,16 @@
-// Header ve Footer template'lerini tanımlayın (English Version)
+/**
+ * Template-based Include System - Solves CORS issues
+ * This approach works on local file system
+ */
+
+// Define Header and Footer templates
 const HeaderTemplate = `
 <header class="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
     <div class="container mx-auto px-4 py-3">
         <div class="flex justify-between items-center">
             <div id="logo-frame" class="flex items-center transition hover:bg-[#f3f6fa] rounded px-2 -ml-2" style="cursor:pointer;">
                 <div class="text-primary font-normal text-lg mr-2 logo">SBU-AI Hub</div>
-                <span class="hidden md:block text-gray-600 text-sm">Artificial Intelligence in Healthcare and Digital Health Research Group</span>
+                <span class="hidden md:block text-gray-600 text-sm">Health AI & Digital Health Systems Research Group</span>
             </div>
             
             <div class="flex items-center space-x-4">
@@ -27,8 +32,8 @@ const HeaderTemplate = `
                         </div>
                     </button>
                     <div class="lang-dropdown bg-white shadow-lg rounded-md py-1 min-w-[100px] hidden">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-medium flex items-center"><img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="EN" class="inline w-5 h-5 mr-1" />EN</a>
-                        <a href="../index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/2560px-Flag_of_Turkey.svg.png" alt="TR" class="inline w-5 h-5 mr-1" />TR</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"><img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="EN" class="inline w-5 h-5 mr-1" />EN</a>
+                        <a href="../index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-medium flex items-center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/2560px-Flag_of_Turkey.svg.png" alt="TR" class="inline w-5 h-5 mr-1" />TR</a>
                     </div>
                 </div>
                 
@@ -40,12 +45,13 @@ const HeaderTemplate = `
             </div>
         </div>
         
-        <!-- Navigation same container, separated with mt-4 -->
+        <!-- Navigation same as original: inside same container, separated with mt-4 -->
         <nav class="hidden md:flex justify-center mt-4">
             <ul class="flex space-x-8">
                 <li><a href="#hero" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Home</a></li>
-                <li><a href="#about" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">About Us</a></li>
+                <li><a href="#about" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">About</a></li>
                 <li><a href="#research" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Research Areas</a></li>
+                <li><a href="#why-join" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Why Join?</a></li>
                 <li><a href="#projects" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Projects</a></li>
                 <li><a href="#publications" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Publications</a></li>
                 <li><a href="#team" class="nav-link text-gray-700 font-medium text-sm hover:text-primary pb-2 border-b-2 border-transparent hover:border-primary">Our Team</a></li>
@@ -69,9 +75,11 @@ const HeaderTemplate = `
             <ul class="flex flex-col gap-0">
                 <li><a href="#hero" class="nav-link flex items-center text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10 rounded px-2 py-1.5 transition"><i class="ri-home-4-line mr-2 text-xl"></i> Home</a></li>
                 <li><div class="h-px bg-gray-200 mx-2"></div></li>
-                <li><a href="#about" class="nav-link flex items-center text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10 rounded px-2 py-1.5 transition"><i class="ri-information-line mr-2 text-xl"></i> About Us</a></li>
+                <li><a href="#about" class="nav-link flex items-center text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10 rounded px-2 py-1.5 transition"><i class="ri-information-line mr-2 text-xl"></i> About</a></li>
                 <li><div class="h-px bg-gray-200 mx-2"></div></li>
                 <li><a href="#research" class="nav-link flex items-center text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10 rounded px-2 py-1.5 transition"><i class="ri-flask-line mr-2 text-xl"></i> Research Areas</a></li>
+                <li><div class="h-px bg-gray-200 mx-2"></div></li>
+                <li><a href="#why-join" class="nav-link flex items-center text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10 rounded px-2 py-1.5 transition"><i class="ri-question-line mr-2 text-xl"></i> Why Join?</a></li>
                 <li><div class="h-px bg-gray-200 mx-2"></div></li>
                 <li><a href="#projects" class="nav-link flex items-center text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10 rounded px-2 py-1.5 transition"><i class="ri-rocket-2-line mr-2 text-xl"></i> Projects</a></li>
                 <li><div class="h-px bg-gray-200 mx-2"></div></li>
@@ -86,7 +94,7 @@ const HeaderTemplate = `
         </nav>
     </aside>
     <script>
-    // Mobile menu functionality
+    // Mobile menu open/close
     document.addEventListener('DOMContentLoaded', function() {
         var menuBtn = document.getElementById('mobile-menu-toggle');
         var menu = document.getElementById('mobile-menu');
@@ -119,7 +127,7 @@ const FooterTemplate = `
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
                 <div class="logo text-white font-pacifico text-2xl mb-4">SBU-AI Hub</div>
-                <p class="text-gray-400 mb-6">Artificial Intelligence in Healthcare and Digital Health Research Group</p>
+                <p class="text-gray-400 mb-6">Health AI & Digital Health Systems Research Group</p>
                 <div class="flex space-x-4">
                     <a href="#" class="text-gray-400 hover:text-white">
                         <i class="ri-twitter-x-fill text-xl"></i>
@@ -140,7 +148,8 @@ const FooterTemplate = `
                 <h3 class="text-lg font-semibold mb-4">Quick Access</h3>
                 <ul class="footer-links space-y-2">
                     <li><a href="/" class="text-gray-400 hover:text-white">Home</a></li>
-                    <li><a href="/about/" class="text-gray-400 hover:text-white">About Us</a></li>
+                    <li><a href="/about/" class="text-gray-400 hover:text-white">About</a></li>
+                    <li><a href="#why-join" class="text-gray-400 hover:text-white">Why Join?</a></li>
                     <li><a href="/research/" class="text-gray-400 hover:text-white">Research Areas</a></li>
                     <li><a href="/projects/" class="text-gray-400 hover:text-white">Projects</a></li>
                     <li><a href="/publications/" class="text-gray-400 hover:text-white">Publications</a></li>
@@ -151,11 +160,11 @@ const FooterTemplate = `
             <div>
                 <h3 class="text-lg font-semibold mb-4">Resources</h3>
                 <ul class="footer-links space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white">Training Materials</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Educational Materials</a></li>
                     <li><a href="#" class="text-gray-400 hover:text-white">Datasets</a></li>
                     <li><a href="#" class="text-gray-400 hover:text-white">Open Source Projects</a></li>
                     <li><a href="#" class="text-gray-400 hover:text-white">Research Papers</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Frequently Asked Questions</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
                 </ul>
             </div>
             
@@ -179,7 +188,7 @@ const FooterTemplate = `
         </div>
         
         <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p class="text-gray-400 text-sm mb-4 md:mb-0">SBU-AI Hub Artificial Intelligence in Healthcare and Digital Health Research Group</p>
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">SBU-AI Hub Health AI & Digital Health Systems Research Group</p>
             <div class="flex space-x-6">
                 <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
                 <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Use</a>
@@ -189,14 +198,14 @@ const FooterTemplate = `
     </div>
 </footer>`;
 
-// Include sistemi sınıfı - Template tabanlı yaklaşım
+// Include system class - Template-based approach
 class TemplateIncludeSystem {
     constructor() {
         this.init();
     }
 
     init() {
-        // DOM yüklendiğinde template'leri yerleştir
+        // Load templates when DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.loadTemplates());
         } else {
@@ -208,36 +217,36 @@ class TemplateIncludeSystem {
         try {
             console.log('Template loading started...');
             
-            // Header'ı yerleştir
+            // Insert Header
             const headerPlaceholder = document.getElementById('header-placeholder');
             if (headerPlaceholder) {
                 headerPlaceholder.innerHTML = HeaderTemplate;
                 headerPlaceholder.classList.remove('loading-placeholder');
-                console.log('✅ Header template loaded successfully');
+                console.log('✅ Header template successfully loaded');
             } else {
                 console.error('❌ header-placeholder element not found');
             }
 
-            // Footer'ı yerleştir
+            // Insert Footer
             const footerPlaceholder = document.getElementById('footer-placeholder');
             if (footerPlaceholder) {
                 footerPlaceholder.innerHTML = FooterTemplate;
                 footerPlaceholder.classList.remove('loading-placeholder');
-                console.log('✅ Footer template loaded successfully');
+                console.log('✅ Footer template successfully loaded');
             } else {
                 console.error('❌ footer-placeholder element not found');
             }
 
-            // Template'ler yüklendikten sonra sayfa özel fonksiyonları çalıştır
+            // Initialize page features after templates are loaded
             this.initializePageFeatures();
 
-            // Custom event dispatch et
+            // Dispatch custom event
             const event = new CustomEvent('includesLoaded', {
                 detail: { method: 'template', timestamp: Date.now() }
             });
             document.dispatchEvent(event);
 
-            console.log('🎉 All templates loaded successfully and features activated');
+            console.log('🎉 All templates successfully loaded and features activated');
 
         } catch (error) {
             console.error('💥 Template loading error:', error);
@@ -246,13 +255,13 @@ class TemplateIncludeSystem {
     }
 
     initializePageFeatures() {
-        // Navigation aktif link ayarı
+        // Navigation active link setting
         this.setActiveNavigation();
         
-        // Arama fonksiyonu
+        // Search function
         this.initializeSearch();
         
-        // Dil seçici
+        // Language selector
         this.initializeLanguageSelector();
         
         console.log('📱 Page features activated');
@@ -267,7 +276,7 @@ class TemplateIncludeSystem {
             link.classList.remove('text-primary', 'border-primary');
             link.classList.add('text-gray-700', 'border-transparent');
             
-            // Aktif link kontrolü
+            // Active link check
             if (currentPath === linkPath || 
                 (currentPath !== '/' && linkPath !== '/' && currentPath.startsWith(linkPath))) {
                 link.classList.remove('text-gray-700', 'border-transparent');
@@ -275,7 +284,7 @@ class TemplateIncludeSystem {
             }
         });
 
-        // Ana sayfa özel durumu
+        // Home page special case
         if (currentPath === '/' || currentPath === '/index.html' || currentPath === '' || currentPath.endsWith('index.html')) {
             const homeLink = document.querySelector('a[href="/"]');
             if (homeLink) {
@@ -287,12 +296,12 @@ class TemplateIncludeSystem {
 
     initializeSearch() {
         const searchInput = document.getElementById('searchInput');
-        // Aranacak başlık ve kart selectorleri
+        // Searchable title and card selectors
         const selectors = [
             'h1', 'h2', 'h3', '.card-title', '.stat-label', '.stat-number', '.card-description', '.text-lg.font-semibold', '.text-xl.font-semibold', '.text-3xl.font-bold', '.text-gray-900', '.text-gray-600', '.text-gray-700'
         ];
         const highlightClass = 'search-highlight';
-        // Highlight için CSS ekle
+        // Add CSS for highlighting
         if (!document.getElementById('search-highlight-style')) {
             const style = document.createElement('style');
             style.id = 'search-highlight-style';
@@ -323,7 +332,7 @@ class TemplateIncludeSystem {
                     });
                 }
             });
-            // Temizlendiğinde highlightları kaldır
+            // Clear highlights when input is cleared
             searchInput.addEventListener('blur', clearHighlights);
             searchInput.addEventListener('change', clearHighlights);
             console.log('🔍 Search function activated');
@@ -370,7 +379,7 @@ window.includeSystem = includeSystem;
 
 console.log('🚀 Template Include System started');
 
-// Mobile menu functionality - for dynamic header
+// Mobile menu open/close - for dynamic header
 function bindMobileMenuEvents() {
     var menuBtn = document.getElementById('mobile-menu-toggle');
     var menu = document.getElementById('mobile-menu');
@@ -392,7 +401,7 @@ function bindMobileMenuEvents() {
             menu.classList.remove('translate-x-0');
             backdrop.classList.add('hidden');
         });
-        // Close menu when clicking menu links
+        // Close menu when clicking on links
         menu.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function() {
                 menu.classList.add('translate-x-full');
@@ -408,7 +417,7 @@ document.addEventListener('includesLoaded', bindMobileMenuEvents);
 // Navigation cross-page anchor support
 function enableCrossPageNavigation() {
   document.addEventListener('includesLoaded', function() {
-    // Only work on external pages like event-details.html
+    // Only work on external pages like event-detail.html
     var isMainPage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
     if (isMainPage) return;
     var navLinks = document.querySelectorAll('.nav-link');
@@ -430,7 +439,7 @@ function enableCrossPageNavigation() {
 }
 enableCrossPageNavigation();
 
-// SBU-AI Hub logo (text) click to scroll to top (with logo-frame)
+// SBU-AI Hub logo click to scroll to top (with logo-frame)
 function bindLogoScrollTop() {
     function scrollToTop(e) {
         e.preventDefault();
