@@ -10,7 +10,7 @@ const HeaderTemplate = `
         <div class="flex justify-between items-center">
             <div id="logo-frame" class="flex items-center transition hover:bg-[#f3f6fa] rounded px-2 -ml-2" style="cursor:pointer;">
                 <div class="text-primary font-normal text-lg mr-2 logo">SBÜ-AI Hub</div>
-                <span class="hidden md:block text-gray-600 text-sm">Sağlıkta Yapay Zekâ ve Dijital Sağlık Araştırma Grubu</span>
+                <span class="hidden md:block text-gray-600 text-sm">Sağlıkta Yapay Zekâ ve Dijital Sağlık Sistemleri Araştırma Grubu</span>
             </div>
             
             <div class="flex items-center space-x-4">
@@ -127,7 +127,7 @@ const FooterTemplate = `
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
                 <div class="logo text-white font-pacifico text-2xl mb-4">SBÜ-AI Hub</div>
-                <p class="text-gray-400 mb-6">Sağlıkta Yapay Zekâ ve Dijital Sağlık Araştırma Grubu</p>
+                <p class="text-gray-400 mb-6">Sağlıkta Yapay Zekâ ve Dijital Sağlık Sistemleri Araştırma Grubu</p>
                 <div class="flex space-x-4">
                     <a href="#" class="text-gray-400 hover:text-white">
                         <i class="ri-twitter-x-fill text-xl"></i>
@@ -188,7 +188,7 @@ const FooterTemplate = `
         </div>
         
         <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p class="text-gray-400 text-sm mb-4 md:mb-0">SBÜ-AI Hub Sağlıkta Yapay Zekâ ve Dijital Sağlık Araştırma Grubu</p>
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">SBÜ-AI Hub Sağlıkta Yapay Zekâ ve Dijital Sağlık Sistemleri Araştırma Grubu</p>
             <div class="flex space-x-6">
                 <a href="#" class="text-gray-400 hover:text-white text-sm">Gizlilik Politikası</a>
                 <a href="#" class="text-gray-400 hover:text-white text-sm">Kullanım Şartları</a>
