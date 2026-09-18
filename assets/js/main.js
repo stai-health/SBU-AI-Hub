@@ -26,7 +26,7 @@ const HeaderTemplate = `
                         <div class="w-5 h-5 flex items-center justify-center">
                             <i class="ri-global-line"></i>
                         </div>
-                        <span class="text-sm flex items-center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/2560px-Flag_of_Turkey.svg.png" alt="TR" class="inline w-5 h-5 mr-1" />TR</span>
+                        <span class="text-sm flex items-center"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/1920px-Flag_of_Turkey.svg.png?utm_source=tr.wikipedia.org&utm_campaign=index&utm_content=thumbnail" alt="TR" class="inline w-5 h-5 mr-1" />TR</span>
                         <div class="w-4 h-4 flex items-center justify-center">
                             <i class="ri-arrow-down-s-line"></i>
                         </div>
