@@ -33,7 +33,7 @@ const HeaderTemplate = `
                     </button>
                     <div class="lang-dropdown bg-white shadow-lg rounded-md py-1 min-w-[100px] hidden">
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"><img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="EN" class="inline w-5 h-5 mr-1" />EN</a>
-                        <a href="../index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-medium flex items-center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/2560px-Flag_of_Turkey.svg.png" alt="TR" class="inline w-5 h-5 mr-1" />TR</a>
+                        <a href="../index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-medium flex items-center"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/1920px-Flag_of_Turkey.svg.png?utm_source=tr.wikipedia.org&utm_campaign=index&utm_content=thumbnail" alt="TR" class="inline w-5 h-5 mr-1" />TR</a>
                     </div>
                 </div>
                 
